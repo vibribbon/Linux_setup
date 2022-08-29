@@ -33,7 +33,13 @@ apt-get install -y feh mupdf youtube-dl firefox-esr pcmanfm gnome-disk-utility g
 # install the i386 architecture (only used by steam)
 dpkg --add-architecture i386
 apt-get update
-apt-get install -y steam lutris
+apt-get install -y steam
+
+# Install Lutris
+apt-get install -y flatpak git
+git clone https://github.com/vibribbon/linux_setup
+cp -r /home/vibri/Linux_setup/script /home/vibri/
+
 
 
 # CONFIGURATION
