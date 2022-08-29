@@ -39,7 +39,8 @@ apt-get install -y steam
 apt-get install -y flatpak git
 git clone https://github.com/vibribbon/linux_setup
 cp -r /home/vibri/Linux_setup/script /home/vibri/
-
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak install lutris
 
 
 # CONFIGURATION
