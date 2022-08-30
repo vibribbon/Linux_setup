@@ -47,6 +47,8 @@ cp -r /home/vibri/Linux_setup/resources/openbox /home/vibri/.config
 echo 'exec xrandr --output HDMI-A-0 --mode 2560x1440 &' >> /home/vibri/.config/openbox/autostart
 echo 'exec xrandr --output HDMI-1 --mode 2560x1440 &' >> /home/vibri/.config/openbox/autostart
 # copy geany configs
+mkdir /home/vibri/.config/geany
+mkdir /home/vibri/.config/geany/colorschemes
 cp /home/vibri/Linux_setup/resources/geany/geany.conf /home/vibri/.config/geany
 cp /home/vibri/Linux_setup/resources/geany/spyder-dark.conf /home/vibri/.config/geany/colorschemes
 # copy slim configs
@@ -58,16 +60,6 @@ chown -R vibri /home/vibri/.config
 cp -r /home/vibri/Linux_setup/scripts/ /home/vibri
 cp -r /home/vibri/Linux_setup/setup/ /home/vibri/scripts/setup
 cp -r /home/vibri/Linux_setup/cheatsheets/ /home/vibri/scripts/cheatsheets
-# admin
-mkdir /home/vibri/files
-rmdir /home/vibri/Documents
-rmdir /home/vibri/Videos
-rmdir /home/vibri/Public
-rmdir /home/vibri/Pictures
-rmdir /home/vibri/Templates
-rmdir /home/vibri/Music
-rmdir /home/vibri/Desktop
-rn /home/vibri/Downloads /home/vibri/downloads
 
 
 # Add user to sudoers, and allow shutdown without password
