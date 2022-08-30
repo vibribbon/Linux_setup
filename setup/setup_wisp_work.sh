@@ -18,13 +18,13 @@ apt-get install -y slim
 # install drivers / firmware (AMD only)
 apt-get install -y firmware-linux firmware-linux-nonfree libdrm-amdgpu1 xserver-xorg-video-amdgpu
 # Command line apps
-apt-get install -y p7zip-full p7zip-rar ranger ncdu tree nano aria2 htop powertop iftop nethogs moc ufw rsync cups flatpak git
+apt-get install -y p7zip-full p7zip-rar ranger ncdu tree nano aria2 htop powertop iftop nethogs ufw rsync cups flatpak git
 # Utilities
-apt-get install -y pulseaudio pavucontrol xsensors slock gnome-disk-utility bleachbit youtube-dl
+apt-get install -y pulseaudio pavucontrol xsensors slock gnome-disk-utility bleachbit youtube-dl xarchiver
 # GUI Apps
 apt-get install -y pcmanfm firefox-esr feh mupdf geany libreoffice-writer libreoffice-impress libreoffice-calc scribus gimp inkscape shotcut handbrake audacity
 # Optional
-# sudo apt-get install chafa conky mirage
+# sudo apt-get install chafa conky mirage r-base moc vlc
 # build essential - needed for virtualbox
 # apt install build-essential dkms linux-headers-$(uname -r)
 
