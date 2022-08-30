@@ -20,11 +20,13 @@ apt-get install -y firmware-linux firmware-linux-nonfree libdrm-amdgpu1 xserver-
 # Command line apps
 apt-get install -y p7zip-full p7zip-rar ranger ncdu tree nano aria2 htop powertop iftop nethogs ufw rsync cups flatpak git
 # Utilities
-apt-get install -y pulseaudio pavucontrol xsensors slock gnome-disk-utility bleachbit youtube-dl xarchiver
+apt-get install -y pulseaudio pavucontrol xsensors slock gnome-disk-utility bleachbit youtube-dl xarchiver arandr
 # GUI Apps
 apt-get install -y pcmanfm firefox-esr feh mupdf geany libreoffice-writer libreoffice-impress libreoffice-calc scribus gimp inkscape shotcut handbrake audacity
 # Optional
-# sudo apt-get install chafa conky mirage r-base moc vlc
+# apt-get install -y  mirage r-base moc vlc stacer transmission blender virtualbox
+# Novelties
+# apt-get install -y chafa conky buici-clock tickr
 # build essential - needed for virtualbox
 # apt install build-essential dkms linux-headers-$(uname -r)
 
