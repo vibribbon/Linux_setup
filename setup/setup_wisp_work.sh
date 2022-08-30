@@ -29,6 +29,7 @@ apt-get install -y pcmanfm firefox-esr feh mupdf geany libreoffice-writer libreo
 # apt-get install -y chafa conky buici-clock tickr
 # build essential - needed for virtualbox
 # apt install build-essential dkms linux-headers-$(uname -r)
+# Rstudio deadbeef and heidisql are manual installs
 
 
 # CONFIGURATION
