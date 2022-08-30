@@ -24,7 +24,7 @@ apt-get install -y firmware-linux firmware-linux-nonfree libdrm-amdgpu1 xserver-
 # other software
 apt-get install -y p7zip-full p7zip-rar ranger ncdu tree nano aria2 htop powertop iftop xsensors nethogs moc ufw rsync cups flatpak slock
 apt-get install -y pulseaudio pavucontrol
-apt-get install -y feh mupdf youtube-dl firefox-esr pcmanfm gnome-disk-utility geany libreoffice-writer libreoffice-impress libreoffice-calc scribus gimp inkscape shotcut handbrake bleachbit audacity
+apt-get install -y feh mupdf youtube-dl firefox-esr pcmanfm gnome-disk-utility geany libreoffice-writer bleachbit
 # sudo apt-get install chafa conky mirage
 # galculate is broken?
 
