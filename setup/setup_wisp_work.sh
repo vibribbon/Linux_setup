@@ -24,7 +24,7 @@ apt-get install -y pulseaudio pavucontrol xsensors slock gnome-disk-utility blea
 # GUI Apps
 apt-get install -y pcmanfm firefox-esr feh mupdf geany libreoffice-writer libreoffice-impress libreoffice-calc scribus gimp inkscape shotcut handbrake audacity
 # Optional
-# apt-get install -y  mirage r-base moc vlc stacer transmission blender virtualbox
+# apt-get install -y mirage r-base moc vlc stacer transmission blender virtualbox
 # Novelties
 # apt-get install -y chafa conky buici-clock tickr
 # build essential - needed for virtualbox
