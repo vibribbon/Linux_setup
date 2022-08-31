@@ -3,7 +3,7 @@
 clear
 
 printf "\n"
-printf "   %s\n" "IP ADDR: $(ip address)"
+printf "   %s\n" "IP ADDR: $(curl ifconfig.me)"
 printf "   %s\n" "USER: $(echo $USER)"
 printf "   %s\n" "DATE: $(date)"
 printf "   %s\n" "UPTIME: $(uptime -p)"
