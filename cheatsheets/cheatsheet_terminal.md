@@ -33,7 +33,7 @@ sudo apt-get install tty-clock
 
 -- cal --
 displays a mini calendar.
-cal -3
+ncal -3
 sudo apt-get install ncal
 
 -- calcurse --
@@ -50,6 +50,17 @@ sudo apt-get install buici-clock
 Basic x clock -d for digital
 Xclock
 sudo apt-get install xclock
+
+-- weather --
+returns the weather (needs wide terminal)
+curl wttr.in/london
+requires curl
+
+-- ANSI weather --
+Simple weather forecast
+ansiweather  -f 3 -s true -l london
+ansiweather  -s true -d true -l london
+sudo apt-get install ansiweather
 
 
 -- monitoring --------------------------------
@@ -113,6 +124,10 @@ Don't forget to turn on monitoring in /etc/default/sysstat
 List CPU details (lots)
 cpuid
 sudo apt-get install cpuid
+
+-- lscpu --
+CPU details
+lscpu
 
 -- stress-ng --
 System stress testing and benchmarking
@@ -347,6 +362,10 @@ Character substitution / removal.
 Chars1.character1 replaced by chars2.character1 etc.  -s will replace repeat characters with a single character.  No chars2 will delete instances.
 tr -s 'chars1' 'chars2'
 
+-- cut --
+cut a section of a string
+cut -c <character from>-<character to>
+
 
 -- partition management ---------------------
 -- lsblk --
@@ -421,6 +440,10 @@ lists hops to reach a target network machine
 traceroute 8.8.8.8
 sudo apt-get install traceroute
 
+-- ss --
+list sockets on the system
+ss -at (tcp or -au for udp)
+
 -- nethogs --
 List network usage by app
 nethogs
@@ -443,9 +466,15 @@ Details regarding a websites hosting
 whois 8.8.8.8
 sudo apt-get install whois
 
+-- speedtest --
+test internet speed
+speedtest-cli
+sudo aot-get install speedtest-cli
+
 -- host --
 IP address and details of a hosted website
 host 8.8.8.8
+host google.com
 Use -a for more detail
 sudo apt-get install host
 
@@ -458,6 +487,11 @@ sudo apt-get install iftop
 IP traffic toolkit for networking
 iptraf
 sudo apt-get install iptraf-ng
+
+-- vnstat --
+report data usage up and down day / month
+vnstat or vnstat -l
+sudo apt-get install vnstat
 
 -- ssh --
 get a terminal for a remote machine
@@ -482,6 +516,11 @@ download tool inc torrent
 aria2c url
 aria2c -I file_of_links.text
 sudo apt-get install aria2
+
+-- curl --
+download various web resources
+curl url
+sudo apt-get install curl
 
 -- nmcli --
 a network conneciton manager (30M)
@@ -617,6 +656,10 @@ usermod -a -G user_group1,group2 username
 list all of your terminal commands issued
 history
 
+-- timetrap --
+Track time spent using apps
+Sudo apt-get install timetrap
+
 
 -- production ------------------------------------
 -- r --
@@ -667,6 +710,12 @@ sudo apt-get install weechat
 Old school irc chat client
 irssi
 sudo apt-get install irssi
+
+
+-- other ------------------------------------------
+-- nl --
+counts things in the terminal, pipe to
+ls | ln
 
 
 -- terminals ------------------------------------
