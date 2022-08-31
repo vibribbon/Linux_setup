@@ -60,6 +60,10 @@ chown -R vibri /home/vibri/.config
 cp -r /home/vibri/Linux_setup/scripts/ /home/vibri
 cp -r /home/vibri/Linux_setup/setup/ /home/vibri/scripts/setup
 cp -r /home/vibri/Linux_setup/cheatsheets/ /home/vibri/scripts/cheatsheets
+# setup pcmanfm
+cp -r /home/vibri/Linux_setup/resources/pcmanfm/default /home/vibri/.config/pcmanfm/default
+# setup bashrc
+cp /home/vibri/Linux_setup/resources/bashrc /home/vibri/.bashrc
 
 
 # Add user to sudoers, and allow shutdown without password
