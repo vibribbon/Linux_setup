@@ -1,6 +1,6 @@
 Linux Cheatsheet
----------------------------------------------
--- IMPORTANT NOTES --------------------------
+=====================================
+== IMPORTANT NOTES =================
 Entries here are Name;Usage;Example;install
 Linux systems are strictly case sensitive 
 sudo invokes superuser permissions
@@ -18,85 +18,31 @@ adding " &" frees the terminal when executing
 [ctrl] + a jump to start of line
 [ctrl] + e jump to end of line
 Some installs require non-free contrib adding to /etc/apt/sources.list
----------------------------------------------
+=====================================
 
 
--- date and time ----------------------------
--- date --
-reports the current date and time.
-date
+=====================================
+== system monitoring ==================
 
--- tty-clock --
-Reports time and date
-tty-clock
-sudo apt-get install tty-clock
-
--- cal --
-displays a mini calendar.
-ncal -3
-sudo apt-get install ncal
-
--- calcurse --
-Full calendar app
-calcurse
-sudo apt-get install calcurse
-
--- buici-clock --
-A stylised circular clock
-Buici-clock
-sudo apt-get install buici-clock
-
--- xclock --
-Basic x clock -d for digital
-Xclock
-sudo apt-get install xclock
-
--- weather --
-returns the weather (needs wide terminal)
-curl wttr.in/london
-requires curl
-
--- ANSI weather --
-Simple weather forecast
-ansiweather  -f 3 -s true -l london
-ansiweather  -s true -d true -l london
-sudo apt-get install ansiweather
-
-
--- monitoring --------------------------------
 -- htop  --
 list system processes and resources.
 htop (q to quit)
 sudo apt-get install htop
 
 -- top --
-Useful for batch exports using -b (can also use PS)
+Simpler version of htop, useful for batch exports using -b (can also use PS)
 Top -b -n iterations > out_file.txt
 
 -- kill --
 stop a process
-kill [process id from top]
-
--- free --
-show available memory resources.
-free -w -h
-
--- nmon --
-Monitoring suite of tools
-nmon
-sudo apt-get install nmon
-
--- dstat --
-Basic scrolling system monitor
-dstat
-sudo apt-get install dstat
+kill [process id from top / htop]
 
 -- iotop --
-Monitor io access
+monitor system io access
 iotop
 
 -- atop --
-Monitor services on local machine
+monitor services on local machine
 atop
 
 -- lsof --
@@ -105,11 +51,30 @@ lsof | grep filename
 lsof -u username
 lsof -p processid
 
+-- free --
+show available memory resources.
+free -wh
+
 -- detailed memory usage --
 Cat /proc/meminfo
 
+-- nmon --
+a combined suite of monitoring tools
+nmon
+sudo apt-get install nmon
+
+-- dstat --
+Basic scrolling system monitor
+dstat
+sudo apt-get install dstat
+
+-- iwatch --
+Directory monitoring tool (60MB)
+iwatch directory_path
+sudo apt-get install iwatch
+
 -- sar --
-Ongoing server monitoring
+ongoing monitoring for servers
 sar -u (for CPU)
 sar -b (for io)
 sar -r (for memory)
@@ -118,26 +83,23 @@ sar -u -f file_path/file_name (use log)
 sudo apt-get install sysstat
 Don't forget to turn on monitoring in /etc/default/sysstat
 
-
--- System info ----------------------------------
--- cpuid --
-List CPU details (lots)
-cpuid
-sudo apt-get install cpuid
-
--- lscpu --
-CPU details
-lscpu
-
 -- stress-ng --
 System stress testing and benchmarking
 stress-ng
 sudo apt-get install stress-ng
 
--- tlp --
-Optimise laptop battery life
-tlp
-sudo apt-get install tlp
+
+=====================================
+== System info ========================
+
+-- lscpu --
+CPU details
+lscpu
+
+-- cpuid --
+List CPU details (lots)
+cpuid
+sudo apt-get install cpuid
 
 -- inxi --
 Basic system information
@@ -148,12 +110,73 @@ sudo apt-get install inxi
 List available hardware, resources men etc
 lspci -vnn 
 
+-- uname --
+lists details of the machine and os
+uname -a
+
+-- neofetch --
+lists details of the machine and os
+neofetch
+sudo apt-get install neofetch
+
 -- glxinfo --
 List details of graphics driver (note caps)
 glxinfo | grep OpenGL
 
 
--- filesystem navigation --------------------
+=====================================
+== package management ================
+
+-- apt-get --
+Installs and removes software
+sudo apt-get update
+sudo apt-get install [app_name]
+sudo apt-get install -f file_path/file_name
+sudo apt-get remove [app_name]
+sudo apt-get autoclean
+sudo apt-get autoremove
+
+-- flatpak --
+Container software store
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak search [application_name]
+flatpak install flathub application_name
+flatpak uninstall application_name
+flatpak list
+flatpak update
+flatpak uninstall --unused
+sudo apt-get install flatpak
+
+-- synaptic --
+Old school package manager
+Synaptic
+sudo apt-get install synaptic
+
+
+=====================================
+== maintenance =======================
+
+-- tlp --
+Optimise laptop battery life
+tlp
+sudo apt-get install tlp
+
+-- rsync --
+Synchronise directories and files
+rsync -avP --delete /source /destination
+rsync -avP --delete -e ssh user@url:/source /destination
+--delete removes non matching files from the destination
+sudo apt-get install rsync
+
+-- rclone --
+Sync to cloud storage
+rclone config
+curl https://rclone.org/install.sh | sudo bash
+
+
+=====================================
+== filesystem navigation ================
+
 -- pwd --
 prints the current working directory in full
 pwd
@@ -165,7 +188,9 @@ cd ..
 cd (straight to home)
 
 
--- file / directories management ------------
+=====================================
+== filesystem management ==============
+
 -- ls --
 list files and folders. 
 (-a include hidden, t sort by modified, S sort by size)
@@ -177,10 +202,44 @@ display a tree structure of the filesystem.
 tree or tree -a
 sudo apt-get install tree
 
+-- cp --
+copies a file
+cp dir_and_file_to_copy dir_and_new_filename
+
+-- mv --
+move a file, useful as a rename
+mv sourcefile new_location_and_filename
+
+-- rm --
+removes files / directories, recursive!
+rm -rvi directory1 
+r is recursive, v for removed files output, I for confirm.
+
+-- touch --
+creats a new file at the given location
+touch /home/user/new_file.txt
+
+-- mkdir --
+makes directories or dirs & sub dies.
+mkdir dirname1
+mkdir -pv dir/parentdir/childdir
+
 -- find --
 find files and directories on the system by
 multiple methods.
 find /home/ -name *.txt
+
+-- diff --
+compare files, < for left file > for right.
+diff file1 file2 > output.txt
+
+-- chown --
+changes ownership of a file
+sudo chown username filename
+
+-- chmod --
+changes file permissions r w x = 4 2 1 
+sudo chmod 744 filename
 
 -- ranger --
 interactive cli file manager / reader.
@@ -216,22 +275,6 @@ sudo apt-get install ncdu
 lists mountpoint drive space usage
 df -Bm
 
--- rclone --
-Sync to cloud storage
-rclone config
-curl https://rclone.org/install.sh | sudo bash
-
--- feh --
-A quick clickable image gallery
-feh -t --thumb-height 150 --thumb-width 200 directory_path
-sudo apt-get install feh
-
-
--- file manipulation ------------------------
--- touch --
-creats a new file at the given location
-touch /home/user/new_file.txt
-
 -- 7z --
 extract / compress files. * will add all
 extract (default same directory)
@@ -253,69 +296,14 @@ tar -cvf my_file.tar file_name
 tar -xvzf myfile.tar
 sudo tar -xvf my_file.tar
 
--- pandoc --
-Converts document formats (150MB+)
-pandoc
-sudo apt-get install pandoc
-
--- grep --
-search for text within a file(s).
-grep find-me *
-
--- ack --
-Search within files
-ack -w --text search_string
-ack -c  search_string (returns counts)
-sudo apt-get install ack-grep
-
--- diff --
-compare files, < for left file > for right.
-diff file1 file2 > output.txt
-
--- chown --
-changes ownership of a file
-sudo chown username filename
-
--- chmod --
-changes file permissions r w x = 4 2 1 
-sudo chmod 744 filename
-
--- mkdir --
-makes directories or dirs & sub dies.
-mkdir dirname1
-mkdir -pv dir/parentdir/childdir
-
--- rm --
-removes files / directories, recursive!
-rm -rvi directory1 
-r is recursive, v for removed files output, I for confirm.
-
--- cp --
-copies a file
-cp dir_and_file_to_copy dir_and_new_filename
-
--- mv --
-move a file, useful as a rename
-mv sourcefile new_location_and_filename 
-
--- rsync --
-Synchronise directories and files
-rsync -avP --delete /source /destination
-rsync -avP --delete -e ssh user@url:/source /destination
---delete removes non matching files from the destination
-sudo apt-get install rsync
-
--- iwatch --
-Directory monitoring tool (60MB)
-iwatch directory_path
-sudo apt-get install iwatch
-
 -- sha256sum --
 Create a sha hash
 Echo -n "hello" | sha256sum
 
 
--- file reading / editing ---------------------
+=====================================
+== file reading / editing =================
+
 -- less --
 open a file for scrollable reading (q quit) 
 less file1
@@ -328,10 +316,6 @@ fold -w 50 -s filename > output.txt
 Concatenates files and displays them.
 cat file1 file2 > output.txt
 
--- nano --
-cli text editor 
-nano /home/user/file.txt
-
 -- wc --
 Counts words and lines in files.
 Output lines/words/characters/filename
@@ -341,16 +325,63 @@ wc file1.txt file2.txt
 Spellcheck files or pipes
 aspell -c file1
 
+-- nano --
+cli text editor 
+nano /home/user/file.txt
+
+-- micro --
+Slimline text editor, nano alternative.
+micro
+sudo apt-get install micro
+
+-- vim --
+Heavyweight text editor with programming features
+vim
+sudo apt-get install vim
+
+-- xwpe --
+Classic style text editor with programming features
+xwpe
+xwe
+sudo apt-get install xwpe
+
+-- pandoc --
+Converts document formats (150MB+)
+pandoc
+sudo apt-get install pandoc
+
 -- chafa --
 CLI image viewer as thumbnail
 chafa file1.jpg file2.png
 
+-- feh --
+A quick clickable image gallery (requires x)
+feh -t --thumb-height 150 --thumb-width 200 directory_path
+sudo apt-get install feh
 
--- string management ------------------------
--- echo --
+
+=====================================
+== file and string manipulation ===========
+
+-- echo -- 
 outputs a string to screen or pipe etc
 echo hello world > output.txt
 echo hello world >> output.txt
+
+-- printr --
+Prints text to the terminal
+printr /s/n "hello"
+
+-- grep --
+search for text within a file(s).
+grep find-me *
+| grep "findme" 
+
+-- ack --
+Search within files
+ack -w --text search_string
+ack -c  search_string (returns counts)
+sudo apt-get install ack-grep
 
 -- sed -- 
 string substitution (s/string_from/string_to)
@@ -366,8 +397,14 @@ tr -s 'chars1' 'chars2'
 cut a section of a string
 cut -c <character from>-<character to>
 
+-- nl --
+counts objects in the terminal, pipe to
+ls | ln
 
--- partition management ---------------------
+
+=====================================
+== partition management ===============
+
 -- lsblk --
 lists all partitions and their heirarchy
 lsblk
@@ -389,50 +426,21 @@ sudo dd if=/dev/random of=/deb/sdb bs=4096
 List all mount points
 findmnt
 
-
--- audio / video ------------------------------------
--- moc --
-A terminal music player
-mocp
-sudo apt-get install moc
-
--- alsamixer --
-a cli volume control / mixer
-alsamixer
-sudo apt-get install alsa-utils
-
--- youtube-dl --
-Download video(s) from streaming sites
-youtube-dl url1 url2 or list.txt
-youtube-dl -o filepath/outfile url1
-youtube-dl -F url (list formats)
-youtube-dl -f [quality number -F] or best
-youtube-dl -x --audio-format mp3 url1
-sudo apt-get install youtube-dl
-
--- flac --
-Encode to and from flac
-flac --compression-level-8 infile.wav
-flac -d in file.flac
-
--- ffmpeg --
-An Audio / video encoder
-ffmpeg -i filename -hide_banner
-Convert
-ffmpeg -i vid_in.wav -qscale 0 vid_out.mp4
-ffmpeg -I aud.flac aud.mp3
-Extract audio
-ffmpeg -i vid.mp4 -vn -ab 160k audio.mp3
-sudo apt-get install ffmpeg
+-- cryptsetup --
+Opens drives encrypted with luks
+sudo cryptsetup luksOpen /dev/sda d_name
+Then mount from /dev/mapper/d_name
 
 
--- network ----------------------------------
+=====================================
+== network ===========================
+
 -- ip address --
 show a machines ip address(s)
 ip address
 
 -- ping --
-reports acces and link speed to a target
+reports access and latency to a target
 ping 8.8.8.8
 
 -- traceroute --
@@ -440,12 +448,39 @@ lists hops to reach a target network machine
 traceroute 8.8.8.8
 sudo apt-get install traceroute
 
+-- whois --
+Details regarding a websites hosting
+whois 8.8.8.8
+sudo apt-get install whois
+
+-- host --
+ip address and details of a hosted website
+host 8.8.8.8
+host google.com
+Use -a for more detail
+sudo apt-get install host
+
 -- ss --
-list sockets on the system
+list active sockets on the system
 ss -at (tcp or -au for udp)
 
+-- nmap --
+a port mapping utility
+nmap 8.8.8.8
+sudo apt-get install nmap
+
+-- speedtest --
+test internet upload / download bandwidth
+speedtest-cli
+sudo aot-get install speedtest-cli
+
+-- vnstat --
+report data usage up and down day / month
+vnstat or vnstat -l
+sudo apt-get install vnstat
+
 -- nethogs --
-List network usage by app
+list live network bandwidth usage by app
 nethogs
 sudo apt-get install nethogs
 
@@ -454,44 +489,15 @@ a simple cli network flow monitor
 bmon
 sudo apt-get install bmon
 
--- nmap --
-Portmapper for network machines
-nmap 8.8.8.8
-nmap 192.168.1.0/24
-Use -A for aggressive mode
-sudo apt-get install nmap
-
--- whois --
-Details regarding a websites hosting
-whois 8.8.8.8
-sudo apt-get install whois
-
--- speedtest --
-test internet speed
-speedtest-cli
-sudo aot-get install speedtest-cli
-
--- host --
-IP address and details of a hosted website
-host 8.8.8.8
-host google.com
-Use -a for more detail
-sudo apt-get install host
-
 -- iftop --
-Monitor network traffic on the host
+monitor live network traffic on the host
 iftop
 sudo apt-get install iftop
 
 -- iptraf --
-IP traffic toolkit for networking
+ip traffic toolkit for networking
 iptraf
 sudo apt-get install iptraf-ng
-
--- vnstat --
-report data usage up and down day / month
-vnstat or vnstat -l
-sudo apt-get install vnstat
 
 -- ssh --
 get a terminal for a remote machine
@@ -551,7 +557,9 @@ elinks
 sudo apt-get install elinks
 
 
--- system -----------------------------------
+=====================================
+== user session ========================
+
 -- exit --
 logs out the current user / closes terminal
 exit
@@ -564,20 +572,6 @@ sudo reboot now
 turns off the machine (no warnings)
 sudo shutdown now
 
--- uname --
-lists details of the machine and os
-uname -a
-
--- neofetch --
-lists details of the machine and os
-neofetch
-sudo apt-get install neofetch
-
--- cryptsetup --
-Opens drives encrypted with luks
-sudo cryptsetup luksOpen /dev/sda d_name
-Then mount from /dev/mapper/d_name
-
 -- lpr --
 Print a file
 lpr -p printer_name path_&_file
@@ -586,37 +580,21 @@ lpr -p printer_name path_&_file
 Print a file
 print path_&_filename
 
--- apt-get --
-Installs and removes software
-sudo apt-get update
-sudo apt-get install [app_name]
-sudo apt-get install -f file_path/file_name
-sudo apt-get remove [app_name]
-sudo apt-get autoclean
-sudo apt-get autoremove
 
--- flatpak --
-Container software store
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak search [application_name]
-flatpak install flathub application_name
-flatpak uninstall application_name
-flatpak list
-flatpak update
-flatpak uninstall --unused
-sudo apt-get install flatpak
+=====================================
+== users ==============================
 
-
--- servers -----------------------------------
--- mariadb --
-Database system based off mysql
-sudo apt-get install mariadb
-
-
--- users ------------------------------------
 -- w --
 lists logged in users with times etc
 w
+
+-- useradd --
+add a new user to the system
+sudo useradd -m -s /bin/bash username
+
+-- userdel --
+deletes a user and all data / home directory
+sudo userdel -r username
 
 -- passwd --
 Change user passwords
@@ -624,17 +602,9 @@ passwd
 sudo passwd username
 sudo passwd root
 
--- useradd --
-add a new user to the system
-sudo useradd -m -s /bin/bash username
-
 -- chsh --
 Change a users default shell (if you forget)
 chsh -s /bin/bash username
-
--- userdel --
-deletes a user and all data / home directory
-sudo userdel -r username
 
 -- groups --
 list a users groups
@@ -657,34 +627,59 @@ list all of your terminal commands issued
 history
 
 -- timetrap --
-Track time spent using apps
-Sudo apt-get install timetrap
+track time spent using apps
+sudo apt-get install timetrap
 
 
--- production ------------------------------------
+=====================================
+== production =========================
+
 -- r --
 Stats spreadsheet, useful with rstudio editor
 r sctipt_dir_name
 sudo apt-get install r-base
 
--- micro --
-Slimline text editor, nano alternative.
-micro
-sudo apt-get install micro
 
--- vim --
-Heavyweight text editor with programming features
-vim
-sudo apt-get install vim
+=====================================
+== audio / video =======================
+-- moc --
+A terminal music player
+mocp
+sudo apt-get install moc
 
--- xwpe --
-Classic style text editor with programming features
-xwpe
-xwe
-sudo apt-get install xwpe
+-- alsamixer --
+a cli volume control / mixer
+alsamixer
+sudo apt-get install alsa-utils
+
+-- youtube-dl --
+Download video(s) from streaming sites
+youtube-dl url1 url2 or list.txt
+youtube-dl -o filepath/outfile url1
+youtube-dl -F url (list formats)
+youtube-dl -f [quality number -F] or best
+youtube-dl -x --audio-format mp3 url1
+sudo apt-get install youtube-dl
+
+-- flac --
+Encode to and from flac
+flac --compression-level-8 infile.wav
+flac -d in file.flac
+
+-- ffmpeg --
+An Audio / video encoder
+ffmpeg -i filename -hide_banner
+Convert
+ffmpeg -i vid_in.wav -qscale 0 vid_out.mp4
+ffmpeg -I aud.flac aud.mp3
+Extract audio
+ffmpeg -i vid.mp4 -vn -ab 160k audio.mp3
+sudo apt-get install ffmpeg
 
 
--- communication ------------------------------------
+=====================================
+== communication =====================
+
 -- mutt --
 An email client configured per user account
 mutt  (read email)
@@ -712,16 +707,72 @@ irssi
 sudo apt-get install irssi
 
 
--- other ------------------------------------------
--- nl --
-counts things in the terminal, pipe to
-ls | ln
+=====================================
+== date and time =======================
+
+-- date --
+reports the current date and time.
+date
+
+-- tty-clock --
+Reports time and date
+tty-clock
+sudo apt-get install tty-clock
+
+-- buici-clock --
+A stylised circular clock
+Buici-clock
+sudo apt-get install buici-clock
+
+-- xclock --
+Basic x clock -d for digital
+Xclock
+sudo apt-get install xclock
+
+-- cal --
+displays a mini calendar.
+ncal -3
+sudo apt-get install ncal
+
+-- calcurse --
+Full calendar app
+calcurse
+sudo apt-get install calcurse
 
 
--- terminals ------------------------------------
+=====================================
+== novelties ===========================
+
+-- weather --
+returns the weather (needs wide terminal)
+curl wttr.in/london
+requires curl
+
+-- ANSI weather --
+Simple weather forecast
+ansiweather  -f 3 -s true -l london
+ansiweather  -s true -d true -l london
+sudo apt-get install ansiweather
+
+
+=====================================
+== servers ============================
+
+-- mariadb --
+Database system based off mysql
+sudo apt-get install mariadb
+
+
+=====================================
+== terminals ==========================
+
 --xfce4-terminal --
 Mid weight terminal with keyword colour highlighting and copy paste
 sudo apt-get install xfce4-terminal
+
+-- xterm --
+simple lightweight terminal
+xterm
 
 -- terminator --
 Heavy weight terminal with mux etc
@@ -736,6 +787,6 @@ Pull down terminal
 sudo apt-get install guake
 
 
----------------------------------------------
----------------------------------------------
-
+=====================================
+=====================================
+END
