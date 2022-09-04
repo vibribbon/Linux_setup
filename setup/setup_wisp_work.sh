@@ -18,7 +18,7 @@ apt-get install -y slim
 # install drivers / firmware (AMD only)
 apt-get install -y firmware-linux firmware-linux-nonfree libdrm-amdgpu1 xserver-xorg-video-amdgpu
 # Command line apps
-apt-get install -y p7zip-full p7zip-rar ranger ncdu tree nano aria2 htop powertop iftop nethogs ufw rsync cups flatpak git ncal curl
+apt-get install -y p7zip-full p7zip-rar ranger ncdu tree nano aria2 htop powertop iftop nethogs ufw rsync cups flatpak git ncal curl vim
 # Utilities
 apt-get install -y pulseaudio pavucontrol xsensors slock gnome-disk-utility bleachbit youtube-dl xarchiver arandr galculator gufw
 # GUI Apps
