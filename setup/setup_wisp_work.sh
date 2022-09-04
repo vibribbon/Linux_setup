@@ -64,8 +64,10 @@ cp -r /home/vibri/Linux_setup/cheatsheets/ /home/vibri/scripts/cheatsheets
 cp -r /home/vibri/Linux_setup/resources/pcmanfm/default /home/vibri/.config/pcmanfm/default
 # setup bashrc
 cp /home/vibri/Linux_setup/resources/bashrc /home/vibri/.bashrc
-# Setup nano.rc
+# Setup nanorc
 cp -r /home/vibri/Linux_setup/resources/nano/nanorc /home/vibri/.config/nano
+# Setup vimrc
+cp -r /home/vibri/Linux_setup/resources/vimrc /home/vibri/.vimrc
 
 
 # Add user to sudoers, and allow shutdown without password
