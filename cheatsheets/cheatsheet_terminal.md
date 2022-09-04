@@ -2,9 +2,12 @@ Linux Cheatsheet
 =====================================
 == IMPORTANT NOTES =================
 Entries here are Name;Usage;Example;install
+
 Linux systems are strictly case sensitive 
 sudo invokes superuser permissions
 man keyword_name displays help for an item
+
+. /file-name will run a bash script (.sh) this is an abbreviation for source file-name
 | is the universal pipe to redirect output
 > redirects output to a file
 >> appends output to the end of a file
@@ -12,12 +15,15 @@ clear clears the terminal screen
 [tab] autofills filenames etc
 [q] or [esc] stops most tasks gracefully
 [ctrl] + c terminates a process
+[Ctrl] + z stop process into background
+fg resume a stopped process
 adding " &" frees the terminal when executing
 ; can seperate subsequent tasks
 && to run subsequent tasks on success only
 [ctrl] + a jump to start of line
 [ctrl] + e jump to end of line
 Some installs require non-free contrib adding to /etc/apt/sources.list
+
 =====================================
 
 
@@ -152,6 +158,21 @@ Old school package manager
 Synaptic
 sudo apt-get install synaptic
 
+-- which --
+Check if package is installed
+which app-name
+
+-- whereis --
+Locate an app on the file system.
+whereis app-name
+
+-- deb-get --
+A useful package manager for non standard or proprietary packages outside of the Debian universe.
+deb-get list
+deb-get install package-name
+Also supports update, upgrade, remove.
+curl -sL https://raw.githubusercontent.com/wimpysworld/deb-get/main/deb-get | sudo -E bash -s install deb-get
+
 
 =====================================
 == maintenance =======================
@@ -173,6 +194,11 @@ Sync to cloud storage
 rclone config
 curl https://rclone.org/install.sh | sudo bash
 
+-- chroot --
+Create a separate list
+ jailed environment for mount recovery / bootloader config / testing
+chroot location /bin/bash
+
 
 =====================================
 == filesystem navigation ================
@@ -185,8 +211,8 @@ pwd
 change current directory, .. is back
 cd directory_name
 cd ..
-cd (straight to home)
-
+cd ~ (straight to home)
+cd - (last directory)
 
 =====================================
 == filesystem management ==============
@@ -321,6 +347,11 @@ Counts words and lines in files.
 Output lines/words/characters/filename
 wc file1.txt file2.txt
 
+-- tail --
+Open the end of a text file and autorefresh
+tail -f filename
+Ctrl c to stop
+
 -- aspell --
 Spellcheck files or pipes
 aspell -c file1
@@ -400,6 +431,14 @@ cut -c <character from>-<character to>
 -- nl --
 counts objects in the terminal, pipe to
 ls | ln
+
+-- column --
+pipe output into columns to organise output
+| column -t
+
+-- truncate --
+Empty a file without deleting
+truncate -s 0 filename
 
 
 =====================================
@@ -580,6 +619,17 @@ lpr -p printer_name path_&_file
 Print a file
 print path_&_filename
 
+-- systemctl --
+Systemd commands to control system units (processes)
+sudo systemctl
+sudo systemctl list-unit-files --type=service
+sudo systemctl status package-name
+sudo systemctl start package-name
+sudo systemctl restart package-name
+sudo systemctl stop package-name
+sudo systemctl enable --now package-name
+sudo systemctl disable package-name
+
 
 =====================================
 == users ==============================
@@ -758,10 +808,24 @@ sudo apt-get install ansiweather
 =====================================
 == servers ============================
 
+-- apache2 --
+Install Apache web server
+sudo apt-get install apache2
+Configs @ /etc/apache2
+Site usually @ /var/www/html
+
 -- mariadb --
 Database system based off mysql
 sudo apt-get install mariadb
+Then run mysql_secure_installation 
+sudo mariadb -u root -p
+update mysql.user set plugin = 'mysql_native_password' where user = 'root' and plugin = 'Unix_socket';
+flush privileges
+Config @ /etc/mysql/mariadb.conf.d/50-server.cnf
 
+-- php --
+Install the php framework 
+sudo apt-get install php libapache2-mod-php  php-mysql
 
 =====================================
 == terminals ==========================
