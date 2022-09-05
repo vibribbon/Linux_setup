@@ -129,6 +129,10 @@ sudo apt-get install neofetch
 List details of graphics driver (note caps)
 glxinfo | grep OpenGL
 
+-- jobs --
+List jobs running on the system
+jobs 
+
 
 =====================================
 == package management ================
@@ -265,6 +269,7 @@ sudo chown username filename
 
 -- chmod --
 changes file permissions r w x = 4 2 1 
+Owner, group, other
 sudo chmod 744 filename
 
 -- ranger --
@@ -326,6 +331,17 @@ sudo tar -xvf my_file.tar
 Create a sha hash
 Echo -n "hello" | sha256sum
 
+-- git --
+Synchronising a working environment
+git clone https://github.com/git-username/project-name
+From the git working folder:
+git status 
+Sync up to git
+git add . & git commit -m "message" & git push 
+Sync down from git
+git pull
+sudo apt-get install git
+
 
 =====================================
 == file reading / editing =================
@@ -366,8 +382,8 @@ micro
 sudo apt-get install micro
 
 -- vim --
-Heavyweight text editor with programming features
-vim
+Heavyweight text editor with ide features
+vim file-name
 sudo apt-get install vim
 
 -- xwpe --
