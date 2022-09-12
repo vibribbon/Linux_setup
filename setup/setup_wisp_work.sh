@@ -47,6 +47,9 @@ cp -r /home/vibri/Linux_setup/resources/openbox /home/vibri/.config
 # auto change the openbox resolution 1440p
 echo 'exec xrandr --output HDMI-A-0 --mode 2560x1440 &' >> /home/vibri/.config/openbox/autostart
 echo 'exec xrandr --output HDMI-1 --mode 2560x1440 &' >> /home/vibri/.config/openbox/autostart
+
+git clone https://github.com/vibribbon/linux_setup
+
 # copy geany configs
 mkdir /home/vibri/.config/geany
 mkdir /home/vibri/.config/geany/colorschemes
