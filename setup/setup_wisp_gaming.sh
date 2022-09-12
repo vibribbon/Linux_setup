@@ -101,8 +101,10 @@ apt-get update
 apt-get install -y steam
 
 # Install Lutris
-# flatpak install lutris
+flatpak install lutris
 
+# Install heroic
+flatpak install heroic
 
 
 
