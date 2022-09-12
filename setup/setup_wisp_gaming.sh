@@ -2,6 +2,15 @@
 
 # wisp Setup using debian only - lightweight setup
 
+# update kernel and install graphics drivers
+sudo apt install firmware-amd-graphics linux-image-amd64 -t bullseye-backports
+
+# install vulkan
+sudo add-apt-repository ppa:oibaf/graphics-drivers
+sudo apt update
+sudo apt upgrade
+sudo apt-get install libvulkan1 mesa-vulkan-drivers vulkan-tools
+
 # CONFIGURE REPOS
 apt-get update
 # Add the non free repos (add contrib non-free onto the end of each line)
