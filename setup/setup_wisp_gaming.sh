@@ -13,14 +13,8 @@ add-apt-repository contrib
 apt-get update
 
 
-# INSTALL OS AND APPS
-apt-get install -y sudo ssh xorg openbox obconf
-# if you want a lightweight login manager 
-apt-get install -y slim
-
 # install drivers / firmware (AMD only)
 # apt-get install -y firmware-linux firmware-linux-nonfree libdrm-amdgpu1 xserver-xorg-video-amdgpu
-
 # update kernel and install graphics drivers
 sudo apt install firmware-amd-graphics linux-image-amd64 -t bullseye-backports
 
@@ -30,8 +24,14 @@ sudo apt update
 sudo apt upgrade
 sudo apt-get install libvulkan1 mesa-vulkan-drivers vulkan-tools
 
+# INSTALL OS AND APPS
+apt-get install -y sudo xorg openbox obconf
+# if you want a lightweight login manager 
+apt-get install -y slim
+
+
 # Command line apps
-apt-get install -y p7zip-full p7zip-rar ranger ncdu tree nano aria2 htop powertop iftop nethogs ufw rsync cups flatpak git ncal curl vim
+apt-get install -y p7zip-full p7zip-rar ranger ncdu tree nano aria2 htop powertop iftop nethogs ufw rsync cups flatpak git ncal curl vim ssh
 # Utilities
 apt-get install -y pulseaudio pavucontrol xsensors slock gnome-disk-utility bleachbit youtube-dl xarchiver arandr galculator gufw
 # GUI Apps
@@ -61,7 +61,6 @@ echo 'exec xrandr --output HDMI-A-0 --mode 2560x1440 &' >> /home/vibri/.config/o
 echo 'exec xrandr --output HDMI-1 --mode 2560x1440 &' >> /home/vibri/.config/openbox/autostart
 
 git clone https://github.com/vibribbon/linux_setup
-
 # copy geany configs
 mkdir /home/vibri/.config/geany
 mkdir /home/vibri/.config/geany/colorschemes
