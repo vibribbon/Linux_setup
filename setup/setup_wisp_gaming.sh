@@ -49,6 +49,7 @@ apt-get install -y pcmanfm firefox-esr feh mupdf geany libreoffice-writer
 # CONFIGURATION
 # Add flathub to flatpak.
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install flatseal
 # copy the openbox default configs to the local user folder.
 mkdir /home/vibri/.config
 cp -r /etc/xdg/openbox /home/vibri/.config
@@ -89,10 +90,10 @@ echo 'vibri ALL=(ALL) NOPASSWD: /sbin/poweroff, /sbin/reboot, /sbin/shutdown' >>
 # add the path for sbin to ease typing
 echo 'export PATH="/sbin:$PATH"' >> /home/vibri/.profile
 
-sudo flatpak install flatseal
+
 
 # gaming software (APT)
-install the i386 architecture (only used by steam)
+# install the i386 architecture (only used by steam)
 dpkg --add-architecture i386
 apt-get update
 apt-get install -y steam
