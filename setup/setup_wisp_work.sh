@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # wisp Setup using debian only - lightweight setup
+# Install your Debian setup of choice - use a STABLE version not testing (no security updates)
 
 # CONFIGURE REPOS
 apt-get update
