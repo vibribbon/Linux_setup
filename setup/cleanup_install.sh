@@ -10,6 +10,5 @@ rmdir /home/vibri/Public
 rmdir /home/vibri/Pictures
 rmdir /home/vibri/Templates
 rmdir /home/vibri/Music
-rmdir /home/vibri/Desktop
 rmdir /home/vibri/Downloads 
 
