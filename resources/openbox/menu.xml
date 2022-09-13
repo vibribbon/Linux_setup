@@ -20,87 +20,93 @@
   </item>
   <item label="Geany">
     <action name="Execute"><execute>geany</execute></action>
-  </item>  
+  </item>
   <item label="Volume">
     <action name="Execute"><execute>pavucontrol</execute></action>
-  </item> 
+  </item>
   <item label="Steam">
     <action name="Execute"><execute>steam</execute></action>
-  </item>   
+  </item>
   <item label="Lutris">
-    <action name="Execute"><execute>lutris</execute></action>
-  </item>     
+    <action name="Execute"><execute>flatpak run net.lutris.Lutris</execute></action>
+  </item>
   <item label="Clock">
-    <action name="Execute"><execute>buici-clock</execute></action>
-  </item>   
+    <action name="Execute"><execute>xclock</execute></action>
+  </item>
   <item label="Feh">
     <action name="Execute"><execute>feh -t --thumb-height 150 --thumb-width 200 /home/vibri/files/</execute></action>
   </item>
 
  <separator />
- 
+
  <menu id="apps" label="apps" >
   <item label="Writer">
     <action name="Execute"><execute>libreoffice --writer</execute></action>
-  </item>  
+  </item>
   <item label="Calc">
     <action name="Execute"><execute>libreoffice --calc</execute></action>
-  </item>  
-  <item label="Rstudio">
-    <action name="Execute"><execute>rstudio</execute></action>
-  </item> 
+  </item>
   <item label="Impress">
     <action name="Execute"><execute>libreoffice --impress</execute></action>
-  </item>  
+  </item>
+  <item label="Rstudio">
+    <action name="Execute"><execute>rstudio</execute></action>
+  </item>
   <item label="Scribus">
     <action name="Execute"><execute>scribus</execute></action>
-  </item>  
+  </item>
   <item label="Mirage">
     <action name="Execute"><execute>mirage</execute></action>
-  </item> 
+  </item>
   <item label="Gimp">
     <action name="Execute"><execute>gimp</execute></action>
-  </item> 
+  </item>
   <item label="Inkscape">
     <action name="Execute"><execute>inkscape</execute></action>
-  </item> 
+  </item>
   <item label="Draw">
     <action name="Execute"><execute>libreoffice --draw</execute></action>
-  </item> 
+  </item>
   <item label="Audacity">
     <action name="Execute"><execute>audacity</execute></action>
-  </item> 
+  </item>
   <item label="Vlc">
     <action name="Execute"><execute>vlc</execute></action>
-  </item>   
+  </item>
+  <item label="Mpv">
+    <action name="Execute"><execute>mpv</execute></action>
+  </item>
   <item label="Deadbeef">
     <action name="Execute"><execute>deadbeef</execute></action>
-  </item> 
+  </item>
   <item label="Shotcut">
     <action name="Execute"><execute>shotcut</execute></action>
-  </item> 
+  </item>
   <item label="Handbrake">
     <action name="Execute"><execute>handbrake</execute></action>
-  </item> 
+  </item>
   <item label="Blender">
     <action name="Execute"><execute>blender</execute></action>
-  </item> 
+  </item>
   <item label="Math">
     <action name="Execute"><execute>libreoffice --math</execute></action>
-  </item>  
+  </item>
   <item label="Base">
     <action name="Execute"><execute>libreoffice --base</execute></action>
-  </item> 
+  </item>
   <item label="Virtualbox">
     <action name="Execute"><execute>virtualbox</execute></action>
-  </item>  
+  </item>
   <item label="Surf">
     <action name="Execute"><execute>surf</execute></action>
   </item>
- 
+
  </menu>
- 
+
   <menu id="utils" label="Utilities" >
+  <item label="Galculator">
+    <action name="Execute"><execute>galculator</execute></action>
+  </item>
   <item label="St">
     <action name="Execute"><execute>st</execute></action>
   </item>
@@ -109,34 +115,40 @@
   </item>
   <item label="Conky">
     <action name="Execute"><execute>conky</execute></action>
-  </item> 
+  </item>
   <item label="Gnome-disks">
     <action name="Execute"><execute>gnome-disks</execute></action>
-  </item>  
+  </item>
   <item label="Xsensors">
     <action name="Execute"><execute>xsensors</execute></action>
-  </item>  
+  </item>
   <item label="Arandr">
     <action name="Execute"><execute>arandr</execute></action>
-  </item>  
+  </item>
   <item label="Transmission">
     <action name="Execute"><execute>transmission-gtk</execute></action>
-  </item>  
+  </item>
   <item label="Xarchiver">
     <action name="Execute"><execute>xarchiver</execute></action>
-  </item>  
+  </item>
   <item label="bleachbit">
     <action name="Execute"><execute>bleachbit</execute></action>
-  </item>  
+  </item>
   <item label="stacer">
     <action name="Execute"><execute>stacer</execute></action>
-  </item>  
-   <item label="Tickr">
+  </item>
+  <item label="Tickr">
     <action name="Execute"><execute>tickr</execute></action>
+  </item>
+  <item label="Flatseal (f)">
+    <action name="Execute"><execute>flatpak run com.github.tchx84.Flatseal</execute></action>
+  </item>
+  <item label="Buici clock">
+    <action name="Execute"><execute>buici-clock</execute></action>
   </item>
  </menu>
 
- 
+
   <!-- This requires the presence of the 'obamenu' package to work -->
   <menu id="/Debian" />
   <separator />
@@ -175,7 +187,7 @@
         <execute>sudo shutdown -h now</execute>
     </action>
  </item>
-  
+
 
 </menu>
 
