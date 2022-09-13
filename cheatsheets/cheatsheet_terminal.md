@@ -177,6 +177,13 @@ deb-get install package-name
 Also supports update, upgrade, remove.
 curl -sL https://raw.githubusercontent.com/wimpysworld/deb-get/main/deb-get | sudo -E bash -s install deb-get
 
+-- install backports --
+Use to install newer software from the testing release
+sudo apt-get install package-name -t bullseye-backports
+
+Pull latest kernel and graphics drivers
+sudo apt-get install firmware-amd-graphics linux-image-amd64 -t bullseye-backports
+
 
 =====================================
 == maintenance =======================
