@@ -1,5 +1,6 @@
 # This file describes the network interfaces available on your system
 # and how to activate them. For more information, see interfaces(5).
+# This file is located in /etc/network/interfaces
 
 source /etc/network/interfaces.d/*
 
