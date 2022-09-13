@@ -26,9 +26,9 @@ apt-get install -y slim
 
 
 # Command line apps
-apt-get install -y p7zip-full p7zip-rar ranger ncdu tree nano aria2 htop powertop iftop nethogs ufw rsync cups flatpak git ncal curl vim ssh
+apt-get install -y p7zip-full p7zip-rar ranger ncdu tree nano aria2 htop powertop iftop nethogs ufw rsync cups flatpak git ncal curl vim ssh slock
 # Utilities
-apt-get install -y xsensors slock gnome-disk-utility bleachbit youtube-dl xarchiver arandr galculator gufw
+apt-get install -y xsensors gnome-disk-utility bleachbit youtube-dl xarchiver arandr galculator gufw
 apt-get install -y pulseaudio pavucontrol
 # GUI Apps
 apt-get install -y pcmanfm firefox-esr feh mupdf geany libreoffice-writer
