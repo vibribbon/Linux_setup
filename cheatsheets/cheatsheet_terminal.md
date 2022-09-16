@@ -3,9 +3,9 @@ Linux Cheatsheet
 == IMPORTANT NOTES =================
 Entries here are Name;Usage;Example;install
 
-Linux systems are strictly case sensitive 
-sudo invokes superuser permissions
-man keyword_name displays help for an item
+Linux systems are strictly case sensitive.
+sudo invokes superuser permissions.
+man keyword_name displays help for an item.
 
 . /file-name will run a bash script (.sh) this is an abbreviation for source file-name
 | is the universal pipe to redirect output
@@ -22,6 +22,11 @@ adding " &" frees the terminal when executing
 && to run subsequent tasks on success only
 [ctrl] + a jump to start of line
 [ctrl] + e jump to end of line
+[ctrl] + u cut test before cursor
+[ctrl] + k cut test after cursor
+[ctrl] + w cut previous word 
+[ctrl] + y paste cut text
+[alt] + . paste last argument
 Some installs require non-free contrib adding to /etc/apt/sources.list
 
 =====================================
@@ -133,6 +138,11 @@ glxinfo | grep OpenGL
 List jobs running on the system
 jobs 
 
+-- nice / renice --
+Nice priority value -20 to 19 (0 is default)
+nice value executable-path
+renice value process-id
+
 
 =====================================
 == package management ================
@@ -209,6 +219,10 @@ curl https://rclone.org/install.sh | sudo bash
 Create a separate list
  jailed environment for mount recovery / bootloader config / testing
 chroot location /bin/bash
+
+-- chroot --
+Fix a messed up terminal.
+reset
 
 
 =====================================
@@ -370,11 +384,6 @@ Counts words and lines in files.
 Output lines/words/characters/filename
 wc file1.txt file2.txt
 
--- tail --
-Open the end of a text file and autorefresh
-tail -f filename
-Ctrl c to stop
-
 -- aspell --
 Spellcheck files or pipes
 aspell -c file1
@@ -425,6 +434,18 @@ echo hello world >> output.txt
 -- printr --
 Prints text to the terminal
 printr /s/n "hello"
+
+-- head --
+Open the start of a text file and autorefresh
+head -f filename
+Ctrl c to stop
+| head 5
+
+-- tail --
+Open the end of a text file and autorefresh
+tail -f filename
+Ctrl c to stop
+| tail 5
 
 -- grep --
 search for text within a file(s).
@@ -590,10 +611,15 @@ download various web resources
 curl url
 sudo apt-get install curl
 
--- nmcli --
+-- network manager nmcli --
 a network conneciton manager (30M)
 nmcli dev status
 sudo apt-get install network-manager
+
+-- wpasupplicant --
+Network connection tool for wifi
+WPA supplicant
+sudo apt-get install wpasupplicant
 
 -- ufw --
 linux firewall, less involved
@@ -798,9 +824,8 @@ Buici-clock
 sudo apt-get install buici-clock
 
 -- xclock --
-Basic x clock -d for digital
+Basic x clock in xorg -d for digital
 Xclock
-sudo apt-get install xclock
 
 -- cal --
 displays a mini calendar.
@@ -827,28 +852,6 @@ ansiweather  -f 3 -s true -l london
 ansiweather  -s true -d true -l london
 sudo apt-get install ansiweather
 
-
-=====================================
-== servers ============================
-
--- apache2 --
-Install Apache web server
-sudo apt-get install apache2
-Configs @ /etc/apache2
-Site usually @ /var/www/html
-
--- mariadb --
-Database system based off mysql
-sudo apt-get install mariadb
-Then run mysql_secure_installation 
-sudo mariadb -u root -p
-update mysql.user set plugin = 'mysql_native_password' where user = 'root' and plugin = 'Unix_socket';
-flush privileges
-Config @ /etc/mysql/mariadb.conf.d/50-server.cnf
-
--- php --
-Install the php framework 
-sudo apt-get install php libapache2-mod-php  php-mysql
 
 =====================================
 == terminals ==========================
