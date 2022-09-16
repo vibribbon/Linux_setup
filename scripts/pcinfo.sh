@@ -1,17 +1,24 @@
 #!/bin/bash
 
-clear
 
+echo '------------------------------------------------------------------'
 printf "\n"
-printf "   %s\n" "DATE: $(date)"
-printf "   %s\n" "IP ADDR: $(curl -s ifconfig.me)"
-printf "   %s\n" "USER: $(echo $USER)"
-printf "   %s\n" "HOSTNAME: $(hostname -f)"
-printf "   %s\n" "UPTIME: $(uptime -p)"
-printf "   %s\n" "CPU: $(lscpu | grep "Model name:" | tr -s "[:blank:]" )"
-printf "   %s\n" "KERNEL: $(uname -svm)"
-printf "   %s\n" "PACKAGES: $(dpkg --get-selections | wc -l)"
-printf "   %s\n" "RESOLUTION: $(xrandr | grep "HDMI")"
-printf "   %s\n" "MEMORY Total: $(free -mh | grep "Mem" | cut -c 17-25)"
-printf "   %s\n" "MEMORY Used: $(free -mh | grep "Mem" | cut -c 28-35)"
+printf "  %b\n" "DATE: \t  $(date)"
+printf "  %b\n" "USER: \t  $(echo $USER)"
+printf "  %b\n" "HOSTNAME: \t  $(hostname -f)"
+printf "  %b\n" "DOMAIN: \t  $(hostname -d)"
+printf "  %b\n" "LOCAL IP: \t  $(hostname -I)"
+printf "  %b\n" "GATEWAY IP: \t $(ip route | grep 'default' | sed -e 's/^\(.*\)default via\(.*\) \(.*\)dev*/\2/g')"
+printf "  %b\n" "EXTERNAL IP:    $(curl -s http://whatismyip.akamai.com/)"
+printf "  %b\n" "UPTIME: \t  $(uptime -p)"
+printf "  %b\n" "KERNEL: \t  $(uname -svm)"
+printf "  %b\n" "SHELL: \t  $(echo $SHELL)"
+printf "  %b\n" "RESOLUTION: \t  $(xrandr | grep '*' | awk '{ print $1 }')"
+printf "  %b\n" "PACKAGES: \t  $(dpkg --get-selections | wc -l)"
+printf "  %b\n" "CPU: \t\t  $(lscpu | grep "Model name:" | tr -s "[:blank:]" )"
+printf "  %b\n" "MEMORY Total:   $(free -mh | grep "Mem" | cut -c 17-25)"
+printf "  %b\n" "MEMORY Used:    $(free -mh | grep "Mem" | cut -c 28-35)"
 printf "\n"
+echo '------------------------------------------------------------------'
+
+
