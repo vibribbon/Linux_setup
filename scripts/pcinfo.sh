@@ -22,4 +22,3 @@ printf "  %b\n" "MEMORY Used:    $(free -mh | grep "Mem" | cut -c 28-35)"
 printf "\n"
 echo '------------------------------------------------------------------'
 
-sudo lspci -v | grep 'Display controller: ' | sed -e 's/[^: ].*: //g'
