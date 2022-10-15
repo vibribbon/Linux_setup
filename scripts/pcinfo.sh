@@ -17,8 +17,8 @@ printf "  %b\n" "RESOLUTION: \t  $(xrandr | grep '*' | awk '{ print $1 }')"
 printf "  %b\n" "PACKAGES: \t  $(dpkg --get-selections | wc -l)"
 printf "  %b\n" "CPU: \t\t  $(lscpu | grep "Model name:" | tr -s "[:blank:]" )"
 printf "  %b\n" "GPU: \t\t  $(lspci -v | grep 'Display controller: ' | sed -e 's/[^: ].*: //g')"
-printf "  %b\n" "MEMORY Total:   $(free -mh | grep "Mem" | cut -c 17-25)"
-printf "  %b\n" "MEMORY Used:    $(free -mh | grep "Mem" | cut -c 28-35)"
+printf "  %b\n" "MEMORY TOT:   $(free -mh | grep "Mem" | cut -c 17-25)"
+printf "  %b\n" "MEMORY USD:    $(free -mh | grep "Mem" | cut -c 28-35)"
 printf "\n"
 echo '------------------------------------------------------------------'
 
