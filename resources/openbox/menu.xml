@@ -10,7 +10,7 @@
  <separator />
 
   <item label="Terminal">
-    <action name="Execute"><execute>xterm -fa default -fs 12</execute></action>
+    <action name="Execute"><execute>uxterm -fa default -fs 12</execute></action>
   </item>
   <item label="Firefox">
     <action name="Execute"><execute>firefox</execute></action>
@@ -154,6 +154,7 @@
   <separator />
 
   <menu id="applications-menu" label="Applications" execute="/usr/bin/obamenu"/>
+
 
  <menu id="Settings" label="Settings" >
  </menu>
