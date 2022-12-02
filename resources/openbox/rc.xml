@@ -265,7 +265,7 @@
         <menu>client-menu</menu>
       </action>
     </keybind>
-    
+
     <!-- Take a screenshot of the current window with scrot when Alt+Print are pressed -->
     <keybind key="A-Print">
       <action name="Execute">
@@ -369,13 +369,22 @@
         <command>xwd -out screenshot.xwd</command>
       </action>
     </keybind>
+    <keybind key="W-w">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>menu_bookmark</name>
+        </startupnotify>
+        <command>"xdotool keyup Super_L type $(cat ~/files/bookmarks.txt | dmenu -l 50 | cut -d' ' -f1)"</command>
+      </action>
+    </keybind>
     <!-- Launch scrot when Print is pressed -->
     <keybind key="Print">
       <action name="Execute">
         <command>scrot</command>
       </action>
     </keybind>
-    
+
 	<!-- 2 screen split -->
 	  <keybind key="W-Left">
 		<action name="Unmaximize" />
@@ -849,7 +858,7 @@
   # order that they appear in this list
 
 
-    # each rule element can be left out or set to 'default' to specify to not 
+    # each rule element can be left out or set to 'default' to specify to not
     # change that attribute of the window
 
     <decor>yes</decor>
