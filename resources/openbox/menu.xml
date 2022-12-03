@@ -19,14 +19,11 @@
 		<item label="File Manager">
 			<action name="Execute"><execute>pcmanfm</execute></action>
 		</item>
-		<item label="Htop">
+		<item label="Processes">
 			<action name="Execute"><execute>uxterm -fa default -fs 12 -e htop</execute></action>
 		</item>
-		<item label="Geany">
+		<item label="Text editor">
 			<action name="Execute"><execute>geany</execute></action>
-		</item>
-		<item label="Volume">
-			<action name="Execute"><execute>pavucontrol</execute></action>
 		</item>
 		<item label="Steam">
 			<action name="Execute"><execute>steam</execute></action>
@@ -36,6 +33,9 @@
 		</item>
 		<item label="Rss Reader">
 				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 100x50 -e rss</execute></action>
+		</item>
+		<item label="Volume">
+			<action name="Execute"><execute>pavucontrol</execute></action>
 		</item>
 
 
@@ -200,9 +200,9 @@
 				<action name="Execute"><execute>x-www-browser http://localhost:631</execute></action>
 			</item>
 			<item label="Firewall (gufw)">
-				<action name="Execute"><execute>gufw</execute></action>
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo gufw</execute></action>
 			</item>
-			<item label="Clamav Virus Scanner">
+			<item label="Virus Scanner">
 				<action name="Execute"><execute>clamtk</execute></action>
 			</item>
 		</menu>
@@ -233,9 +233,6 @@
 			</item>
 			<item label="Partition manager">
 				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo cfdisk</execute></action>
-			</item>
-			<item label="Gparted">
-				<action name="Execute"><execute>gparted</execute></action>
 			</item>
 
 			<separator />
