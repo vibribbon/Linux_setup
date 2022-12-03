@@ -32,7 +32,7 @@
 			<action name="Execute"><execute>flatpak run net.lutris.Lutris</execute></action>
 		</item>
 		<item label="Rss Reader">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 100x50 -e rss</execute></action>
+			<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 100x50 -e rss</execute></action>
 		</item>
 		<item label="Volume">
 			<action name="Execute"><execute>pavucontrol</execute></action>
@@ -56,9 +56,6 @@
 			</item>
 			<item label="Scribus">
 				<action name="Execute"><execute>scribus</execute></action>
-			</item>
-			<item label="Google Apps">
-				<action name="Execute"><execute>x-www-browser https://drive.google.com/</execute></action>
 			</item>
 			<item label="Math">
 				<action name="Execute"><execute>libreoffice --math</execute></action>
@@ -129,6 +126,195 @@
 				<action name="Execute"><execute>surf</execute></action>
 			</item>
 		 </menu>
+
+
+		<!-- SaaS Apps -->
+		<menu id="saas" label="SaaS" >
+			<item label="Google Apps">
+				<action name="Execute"><execute>x-www-browser https://drive.google.com/</execute></action>
+			</item>
+			<item label="Office 365">
+				<action name="Execute"><execute>x-www-browser https://www.office.com/</execute></action>
+			</item>
+			<item label="Github">
+				<action name="Execute"><execute>x-www-browser https://github.com/</execute></action>
+			</item>
+			<item label="Maps (google)">
+				<action name="Execute"><execute>x-www-browser https://www.google.com/maps</execute></action>
+			</item>
+			<item label="Photo editor (photopea)">
+				<action name="Execute"><execute>x-www-browser https://www.photopea.com/</execute></action>
+			</item>
+			<item label="Slides (slides.com)">
+				<action name="Execute"><execute>x-www-browser https://slides.com/#features</execute></action>
+			</item>
+			<item label="Diagrams (diagrams.net)">
+				<action name="Execute"><execute>x-www-browser https://app.diagrams.net/</execute></action>
+			</item>
+			<item label="Infographics (piktochart)">
+				<action name="Execute"><execute>x-www-browser https://piktochart.com/formats/infographics/</execute></action>
+			</item>
+			<item label="Disposable email (10minutemail.com)">
+				<action name="Execute"><execute>x-www-browser https://10minutemail.com/</execute></action>
+			</item>
+			<item label="Latex editor (overleaf.com)">
+				<action name="Execute"><execute>x-www-browser https://www.overleaf.com/register</execute></action>
+			</item>
+			<item label="Tasks (Trello)">
+				<action name="Execute"><execute>x-www-browser https://trello.com/</execute></action>
+			</item>
+			<item label="IP Tools (whatsmyip.org)">
+				<action name="Execute"><execute>x-www-browser https://www.whatsmyip.org/</execute></action>
+			</item>
+			<item label="Translate (google)">
+				<action name="Execute"><execute>x-www-browser https://translate.google.com/</execute></action>
+			</item>
+			<item label="Whatsapp web">
+				<action name="Execute"><execute>x-www-browser https://web.whatsapp.com</execute></action>
+			</item>
+			<item label="Script poster (pastebin)">
+				<action name="Execute"><execute>x-www-browser https://pastebin.com/</execute></action>
+			</item>
+			<item label="Draw kanji (qhanzi.com)">
+				<action name="Execute"><execute>x-www-browser https://www.qhanzi.com/</execute></action>
+			</item>
+			<item label="Math solver (mathsolver)">
+				<action name="Execute"><execute>x-www-browser https://mathsolver.microsoft.com/en</execute></action>
+			</item>
+
+			<separator />
+			<item label="Vm desktop online (bellard.org)">
+				<action name="Execute"><execute>x-www-browser https://bellard.org/jslinux/</execute></action>
+			</item>
+			<item label="Vm terminal online (cocalc.com)">
+				<action name="Execute"><execute>x-www-browser https://cocalc.com/features/terminal</execute></action>
+			</item>
+		</menu>
+
+
+		<!-- Useful websites -->
+		<menu id="websites" label="Useful sites" >
+			<item label="Web search (duckduckgo.com)">
+				<action name="Execute"><execute>x-www-browser https://duckduckgo.com/?kz=-1&kc=-1&kae=t&kn=1&k1=-1&kaj=m&kak=-1&kax=-1&kaq=-1&kap=-1&kao=-1&kau=-1&kf=-1</execute></action>
+			</item>
+			<item label="Wikipedia (wikipedia.org)">
+				<action name="Execute"><execute>x-www-browser https://en.m.wikipedia.org/wiki/Main_Page</execute></action>
+			</item>
+			<item label="Dictionary (wiktionary.org)">
+				<action name="Execute"><execute>x-www-browser https://en.m.wiktionary.org/wiki/Special:Search</execute></action>
+			</item>
+			<item label="Youtube player (Invidious)">
+				<action name="Execute"><execute>x-www-browser https://invidio.xamh.de/feed/popular</execute></action>
+			</item>
+			<item label="Network speed (fast.com)">
+				<action name="Execute"><execute>x-www-browser https://fast.com/en/gb/#</execute></action>
+			</item>
+			<item label="Alternative to">
+				<action name="Execute"><execute>x-www-browser https://alternativeto.net/</execute></action>
+			</item>
+			<item label="Just watch">
+				<action name="Execute"><execute>x-www-browser https://www.justwatch.com/uk</execute></action>
+			</item>
+			<item label="Urban dictionary (urbandictionary.com)">
+				<action name="Execute"><execute>x-www-browser https://www.urbandictionary.com/</execute></action>
+			</item>
+
+			<separator />
+			<item label="Manuals (manualslib.com)">
+				<action name="Execute"><execute>x-www-browser https://www.manualslib.com/</execute></action>
+			</item>
+			<item label="Cheat sheets (cheatography.com)">
+				<action name="Execute"><execute>x-www-browser https://cheatography.com/</execute></action>
+			</item>
+			<item label="Dietry advice (eatthismuch.com)">
+				<action name="Execute"><execute>x-www-browser https://www.eatthismuch.com/</execute></action>
+			</item>
+			<item label="Corporate tel numbers (gethuman.com)">
+				<action name="Execute"><execute>x-www-browser https://gethuman.com/</execute></action>
+			</item>
+			<item label="Foreign travel advice (gov.uk)">
+				<action name="Execute"><execute>x-www-browser https://www.gov.uk/foreign-travel-advice</execute></action>
+			</item>
+			<item label="Google public data (google)">
+				<action name="Execute"><execute>x-www-browser https://www.google.com/publicdata/directory</execute></action>
+			</item>
+			<item label="Ftse 100 tracker (londonstockexchange.com)">
+				<action name="Execute"><execute>x-www-browser https://www.londonstockexchange.com/indices/ftse-100/constituents/table</execute></action>
+			</item>
+			<item label="Uk crime tracker (police.uk)">
+				<action name="Execute"><execute>x-www-browser https://www.police.uk/pu/your-area/</execute></action>
+			</item>
+			<item label="Food hygine ratings (food.gov.uk)">
+				<action name="Execute"><execute>x-www-browser https://ratings.food.gov.uk/default/en-GB</execute></action>
+			</item>
+			<item label="Exchenge rate £ vs $ (xe.com)">
+				<action name="Execute"><execute>x-www-browser https://www.xe.com/currencycharts/?from=GBP&to=USD</execute></action>
+			</item>
+			<item label="Uk fuel prices (rac.co.uk)">
+				<action name="Execute"><execute>x-www-browser https://www.rac.co.uk/drive/advice/fuel-watch/</execute></action>
+			</item>
+			<item label="Covid tracker (gov.uk)">
+				<action name="Execute"><execute>x-www-browser https://coronavirus.data.gov.uk/</execute></action>
+			</item>
+
+			<separator />
+			<item label="Email hacked check (haveibeenpwned.com)">
+				<action name="Execute"><execute>x-www-browser https://haveibeenpwned.com/</execute></action>
+			</item>
+			<item label="Reverse image search (tineye.com)">
+				<action name="Execute"><execute>x-www-browser https://tineye.com/</execute></action>
+			</item>
+			<item label="Online virus checker (virustotal.com)">
+				<action name="Execute"><execute>x-www-browser https://www.virustotal.com/gui/home/upload</execute></action>
+			</item>
+			<item label="Online virus checker (jotti.org)">
+				<action name="Execute"><execute>x-www-browser https://virusscan.jotti.org/en</execute></action>
+			</item>
+			<item label="Pc hardware compatability (pcpartpicker.com)">
+				<action name="Execute"><execute>x-www-browser https://uk.pcpartpicker.com/list/</execute></action>
+			</item>
+			<item label="Earth Temperature">
+				<action name="Execute"><execute>x-www-browser https://earth.nullschool.net/#current/wind/surface/level/overlay=temp/orthographic=-342.11,30.84,601</execute></action>
+			</item>
+			<item label="Google trends (trends.google)">
+				<action name="Execute"><execute>x-www-browser https://trends.google.co.in/trends/?geo=GB</execute></action>
+			</item>
+			<item label="Know your meme (knowyourmeme.com)">
+				<action name="Execute"><execute>x-www-browser https://knowyourmeme.com/</execute></action>
+			</item>
+
+			<separator />
+			<item label="Google fonts">
+				<action name="Execute"><execute>x-www-browser https://fonts.google.com/</execute></action>
+			</item>
+			<item label="Image (unsplash.com)">
+				<action name="Execute"><execute>x-www-browser https://unsplash.com/</execute></action>
+			</item>
+			<item label="Giphy (giphy.com)">
+				<action name="Execute"><execute>x-www-browser https://giphy.com/</execute></action>
+			</item>
+			<item label="Icons (thenounproject.com)">
+				<action name="Execute"><execute>x-www-browser https://thenounproject.com/</execute></action>
+			</item>
+			<item label="Character map (copychar.cc)">
+				<action name="Execute"><execute>x-www-browser https://copychar.cc/popular/</execute></action>
+			</item>
+			<item label="Print friendly">
+				<action name="Execute"><execute>x-www-browser https://www.printfriendly.com/</execute></action>
+			</item>
+			<item label="Cloud convert">
+				<action name="Execute"><execute>x-www-browser https://cloudconvert.com/</execute></action>
+			</item>
+			<item label="Appimage hub (appimagehub.com)">
+				<action name="Execute"><execute>x-www-browser https://www.appimagehub.com/</execute></action>
+			</item>
+			<item label="Portableapps (portableapps.com)">
+				<action name="Execute"><execute>x-www-browser https://portableapps.com/</execute></action>
+			</item>
+			<item label="Apk mirror">
+				<action name="Execute"><execute>x-www-browser https://www.apkmirror.com/apk/google-inc/google-play-store-android-wear/</execute></action>
+			</item>
+		</menu>
 
 
 		<!-- System utilities-->
@@ -245,6 +431,15 @@
 			<item label="Network usage">
 				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo nethogs</execute></action>
 			</item>
+			<item label="Network machines">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo nmap $(echo $(hostname -I) | cut -d. -f 1-3 | sed 's/$/\.0\/24/g')</execute></action>
+			</item>
+			<item label="Portscan local">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo nmap $(hostname -I)</execute></action>
+			</item>
+			<item label="Portscan router">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo nmap $(curl -s http://whatismyip.akamai.com/)</execute></action>
+			</item>
 			<item label="Services">
 				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo systemctl list-unit-files --type=service</execute></action>
 			</item>
@@ -345,6 +540,9 @@
 			</item>
 			<item label="Edit Sudoers (superusers)">
 				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo nano /etc/sudoers</execute></action>
+			</item>
+			<item label="Edit hosts (network)">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo nano /etc/hosts</execute></action>
 			</item>
 		</menu>
 
