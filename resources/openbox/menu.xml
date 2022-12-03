@@ -195,7 +195,7 @@
 		<!-- Useful websites -->
 		<menu id="websites" label="Useful sites" >
 			<item label="Web search (duckduckgo.com)">
-				<action name="Execute"><execute>x-www-browser https://duckduckgo.com/?kz=-1&kc=-1&kae=t&kn=1&k1=-1&kaj=m&kak=-1&kax=-1&kaq=-1&kap=-1&kao=-1&kau=-1&kf=-1</execute></action>
+				<action name="Execute"><execute>x-www-browser https://lite.duckduckgo.com/lite</execute></action>
 			</item>
 			<item label="Wikipedia (wikipedia.org)">
 				<action name="Execute"><execute>x-www-browser https://en.m.wikipedia.org/wiki/Main_Page</execute></action>
