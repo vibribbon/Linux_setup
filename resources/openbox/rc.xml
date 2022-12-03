@@ -360,6 +360,15 @@
         <command>xclock -norender</command>
       </action>
     </keybind>
+    <keybind key="W-r">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>launch-run</name>
+        </startupnotify>
+        <command>gmrun</command>
+      </action>
+    </keybind>
     <keybind key="W-s">
       <action name="Execute">
         <startupnotify>

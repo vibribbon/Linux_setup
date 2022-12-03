@@ -7,19 +7,20 @@
 
 	<menu id="root-menu" label="Openbox 3">
 		<menu id="tdate" label="Current Time" execute="sh /home/vibri/scripts/tdate.sh" />
-		<item label="Clock">
-			<action name="Execute"><execute>xclock -norender</execute></action>
-		</item>
 
+		<!-- Main menu items -->
 		<separator />
 		<item label="Terminal">
 			<action name="Execute"><execute>uxterm -fa default -fs 12</execute></action>
 		</item>
 		<item label="Browser">
-			<action name="Execute"><execute>firefox</execute></action>
+			<action name="Execute"><execute>x-www-browser</execute></action>
 		</item>
 		<item label="File Manager">
 			<action name="Execute"><execute>pcmanfm</execute></action>
+		</item>
+		<item label="Htop">
+			<action name="Execute"><execute>uxterm -fa default -fs 12 -e htop</execute></action>
 		</item>
 		<item label="Geany">
 			<action name="Execute"><execute>geany</execute></action>
@@ -33,12 +34,13 @@
 		<item label="Lutris-f">
 			<action name="Execute"><execute>flatpak run net.lutris.Lutris</execute></action>
 		</item>
-		<item label="Feh">
-			<action name="Execute"><execute>feh -t --thumb-height 150 --thumb-width 200 /home/vibri/files/</execute></action>
+		<item label="Rss Reader">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 100x50 -e rss</execute></action>
 		</item>
 
 
 		<separator />
+		<!-- Major applications menu -->
 		<menu id="Apps" label="Apps" >
 			<item label="Writer">
 				<action name="Execute"><execute>libreoffice --writer</execute></action>
@@ -55,8 +57,20 @@
 			<item label="Scribus">
 				<action name="Execute"><execute>scribus</execute></action>
 			</item>
+			<item label="Google Apps">
+				<action name="Execute"><execute>x-www-browser https://drive.google.com/</execute></action>
+			</item>
+			<item label="Math">
+				<action name="Execute"><execute>libreoffice --math</execute></action>
+			</item>
+			<item label="Base">
+				<action name="Execute"><execute>libreoffice --base</execute></action>
+			</item>
 
 			<separator />
+			<item label="Feh">
+				<action name="Execute"><execute>feh -t --thumb-height 150 --thumb-width 200 ~/files/</execute></action>
+			</item>
 			<item label="Mirage">
 				<action name="Execute"><execute>mirage</execute></action>
 			</item>
@@ -77,11 +91,14 @@
 			</item>
 
 			<separator />
-			<item label="Audacity">
-				<action name="Execute"><execute>audacity</execute></action>
+			<item label="Moc">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -e mocp</execute></action>
 			</item>
 			<item label="Deadbeef">
 				<action name="Execute"><execute>deadbeef</execute></action>
+			</item>
+			<item label="Audacity">
+				<action name="Execute"><execute>audacity</execute></action>
 			</item>
 
 			<separator />
@@ -102,11 +119,8 @@
 			<item label="Blender">
 				<action name="Execute"><execute>blender</execute></action>
 			</item>
-			<item label="Math">
-				<action name="Execute"><execute>libreoffice --math</execute></action>
-			</item>
-			<item label="Base">
-				<action name="Execute"><execute>libreoffice --base</execute></action>
+			<item label="Calibre">
+				<action name="Execute"><execute>calibre</execute></action>
 			</item>
 			<item label="Virtualbox">
 				<action name="Execute"><execute>virtualbox</execute></action>
@@ -117,17 +131,33 @@
 		 </menu>
 
 
+		<!-- System utilities-->
 		<menu id="utils" label="Utilities" >
-			<item label="St">
-				<action name="Execute"><execute>st</execute></action>
+			<item label="Ranger">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -e ranger</execute></action>
+			</item>
+			<item label="Midnight Commander">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -e mc</execute></action>
+			</item>
+			<item label="Tree">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e tree ~/</execute></action>
+			</item>
+			<item label="Search">
+				<action name="Execute"><execute>catfish</execute></action>
 			</item>
 
 			<separator />
+			<item label="Clock">
+				<action name="Execute"><execute>xclock -norender</execute></action>
+			</item>
+			<item label="Timezones">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -e timezone</execute></action>
+			</item>
 			<item label="Conky Time">
 				<action name="Execute"><execute>conky -c ~/.conky/qclocktwo-master/qclocktwo</execute></action>
 			</item>
-			<item label="Buici clock">
-				<action name="Execute"><execute>buici-clock</execute></action>
+			<item label="Calendar 3m">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e ncal -3</execute></action>
 			</item>
 
 			<separator />
@@ -137,40 +167,137 @@
 			<item label="stacer">
 				<action name="Execute"><execute>stacer</execute></action>
 			</item>
-			<item label="Xsensors">
-				<action name="Execute"><execute>xsensors</execute></action>
+			<item label="Weather">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -e weather</execute></action>
 			</item>
-
-			<separator />
-			<item label="Transmission">
-				<action name="Execute"><execute>transmission-gtk</execute></action>
+			<item label="xcalc">
+				<action name="Execute"><execute>xcalc</execute></action>
 			</item>
 			<item label="Xarchiver">
 				<action name="Execute"><execute>xarchiver</execute></action>
 			</item>
-			<item label="Galculator">
-				<action name="Execute"><execute>galculator</execute></action>
+			<item label="Transmission">
+				<action name="Execute"><execute>transmission-gtk</execute></action>
 			</item>
-
-			<separator />
 			<item label="Nitrogen">
 				<action name="Execute"><execute>nitrogen</execute></action>
-			</item>
-			<item label="Arandr">
-				<action name="Execute"><execute>arandr</execute></action>
 			</item>
 			<item label="bleachbit">
 				<action name="Execute"><execute>bleachbit</execute></action>
 			</item>
-			<item label="Gnome-disks">
-				<action name="Execute"><execute>gnome-disks</execute></action>
-			</item>
 			<item label="Flatseal-f">
 				<action name="Execute"><execute>flatpak run com.github.tchx84.Flatseal</execute></action>
+			</item>
+
+			<separator />
+			<item label="St terminal">
+				<action name="Execute"><execute>st</execute></action>
+			</item>
+			<item label="Alsamixer">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -e alsamixer</execute></action>
+			</item>
+			<item label="Printers (cups)">
+				<action name="Execute"><execute>x-www-browser http://localhost:631</execute></action>
+			</item>
+			<item label="Firewall (gufw)">
+				<action name="Execute"><execute>gufw</execute></action>
+			</item>
+			<item label="Clamav Virus Scanner">
+				<action name="Execute"><execute>clamtk</execute></action>
 			</item>
 		</menu>
 
 
+		<!-- System tools -->
+		<menu id="system" label="System" >
+			<item label="System update">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e sudo apt_system_update</execute></action>
+			</item>
+			<item label="Flatpak update">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e sudo flatpak update</execute></action>
+			</item>
+			<item label="PC Info">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 100x30+0+0 -hold -e pcinfo</execute></action>
+			</item>
+			<item label="Memory usage">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e free -h</execute></action>
+			</item>
+			<item label="Hdd usage">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -e ncdu /</execute></action>
+			</item>
+			<item label="Change resolution">
+				<action name="Execute"><execute>arandr</execute></action>
+			</item>
+			<item label="Gnome-disks">
+				<action name="Execute"><execute>gnome-disks</execute></action>
+			</item>
+			<item label="Partition manager">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo cfdisk</execute></action>
+			</item>
+			<item label="Gparted">
+				<action name="Execute"><execute>gparted</execute></action>
+			</item>
+
+			<separator />
+			<item label="Network ports">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e ss -at</execute></action>
+			</item>
+			<item label="Network access">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo iftop</execute></action>
+			</item>
+			<item label="Network usage">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo nethogs</execute></action>
+			</item>
+			<item label="Services">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo systemctl list-unit-files --type=service</execute></action>
+			</item>
+			<item label="Power usage">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 100x50+0+0 -e sudo powertop</execute></action>
+			</item>
+			<item label="Temperature monitor">
+				<action name="Execute"><execute>xsensors</execute></action>
+			</item>
+			<item label="Hdd io">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo iotop</execute></action>
+			</item>
+			<item label="Open files">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 150x70+0+0 -hold -e lsof</execute></action>
+			</item>
+
+			<separator />
+			<item label="Installed apps">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 80x70+0+0 -e sudo list_manual_apps</execute></action>
+			</item>
+			<item label="Active partitions">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e lsblk</execute></action>
+			</item>
+			<item label="Mount diskspace">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e df -h</execute></action>
+			</item>
+			<item label="Mount points">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e findmnt</execute></action>
+			</item>
+			<item label="Current users">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e w</execute></action>
+			</item>
+			<item label="System paths">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e 'echo $PATH'</execute></action>
+			</item>
+			<item label="List resolutions">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e xrandr</execute></action>
+			</item>
+
+			<separator />
+			<item label="Modified Files">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 150x70+0+0 -e ~/scripts/./find_files_modified_day.sh</execute></action>
+			</item>
+			<item label="Accessed Files">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 150x70+0+0 -e ~/scripts/./find_files_accessed_day.sh</execute></action>
+			</item>
+		</menu>
+
+
+		<!-- File system locations -->
 		<menu id="places" label="Places" >
 			<item label="Current Home Folder">
 				<action name="Execute"><execute>pcmanfm ~/</execute></action>
@@ -199,6 +326,7 @@
 		</menu>
 
 
+		<!-- Common config scripts-->
 		<menu id="config" label="Config" >
 			<item label="Edit Openbox Autostart">
 				<action name="Execute"><execute>geany ~/.config/openbox/autostart</execute></action>
@@ -209,22 +337,45 @@
 			<item label="Edit Openbox Keybindings">
 				<action name="Execute"><execute>geany ~/.config/openbox/rc.xml</execute></action>
 			</item>
-			<item label="Edit Bashrc">
+			<item label="Edit Bashrc (bash config)">
 				<action name="Execute"><execute>geany ~/.bashrc</execute></action>
+			</item>
+			<item label="Edit fstab (mount points)">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo nano /etc/fstab</execute></action>
+			</item>
+			<item label="Edit Apt Source (Packages)">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo nano /etc/apt/sources.list</execute></action>
+			</item>
+			<item label="Edit Sudoers (superusers)">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo nano /etc/sudoers</execute></action>
 			</item>
 		</menu>
 
 
-		<!-- This requires the presence of the 'obamenu' package to work -->
+		<!-- This requires the presence of the 'obamenu' package to work
 		<menu id="/Debian" />
 
 		<separator />
-		<menu id="applications-menu" label="Applications" execute="/usr/bin/obamenu"/>
+		<menu id="applications-menu" label="Applications" execute="/usr/bin/obamenu"/> -->
 
 
+		<!-- Openbox config -->
+		<separator />
 		<menu id="obox" label="Openbox" >
 			<item label="ObConf">
 				<action name="Execute"><execute>obconf</execute></action>
+			</item>
+			<item label="Wallpaper (nitrogen)">
+				<action name="Execute"><execute>nitrogen --restore</execute></action>
+			</item>
+			<item label="Taskbar">
+				<action name="Execute"><execute>tint2</execute></action>
+			</item>
+			<item label="Launcher">
+				<action name="Execute"><execute>plank</execute></action>
+			</item>
+			<item label="Clipboard">
+				<action name="Execute"><execute>parcellite</execute></action>
 			</item>
 			<item label="Reconfigure">
 				<action name="Reconfigure" />
@@ -235,6 +386,7 @@
 		</menu>
 
 
+		<!-- OS controlls -->
 		<separator />
 		<item label="Lock">
 			<action name="Execute"><execute>slock</execute></action>
