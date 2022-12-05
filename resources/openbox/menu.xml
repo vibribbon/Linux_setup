@@ -6,7 +6,7 @@
                 file:///usr/share/openbox/menu.xsd">
 
 	<menu id="root-menu" label="Openbox 3">
-		<menu id="tdate" label="Current Time" execute="sh /home/vibri/scripts/tdate.sh" />
+		<menu id="tdate" label="Current Time" execute="sh /usr/local/bin/tdate" />
 
 		<!-- Main menu items -->
 		<separator />
