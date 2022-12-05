@@ -4,11 +4,13 @@
 # Install your Debian setup of choice first - use a STABLE version not testing (no security updates)
 # ----------------------------------------------------------------------
 
+# Set user local home folder
+USER_HOME=$(getent passwd $SUDO_USER | cut -d: -f6)
 
 # ----------------------------------------------------------------------
 ### CONFIGURE REPOS ###
 # this file contains all the non-open repos and backports
-cp ~/linux_setup/resources/apt/sources.list /etc/apt/
+cp $USER_HOME/linux_setup/resources/apt/sources.list /etc/apt/
 apt-get update
 # ----------------------------------------------------------------------
 
@@ -25,9 +27,9 @@ echo 'vibri ALL=(ALL) NOPASSWD: /sbin/poweroff, /sbin/reboot, /sbin/shutdown' >>
 # ----------------------------------------------------------------------
 ### SETUP ENVIRONMENT ###
 # add the path environment for sbin to ease typing
-echo 'export PATH="/sbin:$PATH"' >> ~/.profile
+echo 'export PATH="/sbin:$PATH"' >> $USER_HOME/.profile
 # setup bashrc
-cp ~/linux_setup/resources/.bashrc ~/.bashrc
+cp $USER_HOME/linux_setup/resources/.bashrc $USER_HOME/.bashrc
 # ----------------------------------------------------------------------
 
 
@@ -54,11 +56,11 @@ apt-get install -y slock # simple screen locker
 
 apt-get install -y nano # cli text editor (often installed by default)
 # Setup nanorc
- cp ~/linux_setup/resources/nano/nanorc ~/.nanorc
+ cp $USER_HOME/linux_setup/resources/nano/nanorc $USER_HOME/.nanorc
 
 apt-get install -y vim # advanced cli text editor
 # Setup vimrc
- cp ~/linux_setup/resources/.vimrc ~/.vimrc
+ cp $USER_HOME/linux_setup/resources/.vimrc $USER_HOME/.vimrc
 
 apt-get install -y flatpak # flatpak package manager
 # Add flathub repo to flatpak.
@@ -81,18 +83,19 @@ apt-get install -y git # code project management
 ### SCRIPTS ###
 # setup local scripts folder and make executable (requires git)
 git clone https://github.com/vibribbon/scripts
-chown -R root ~/scripts/
-chmod -R 755 ~/scripts/
+chown -R root $USER_HOME/scripts/
+chmod -R 755 $USER_HOME/scripts/
 
 # copy the files and remove their extension
-for i in ~/scripts/*.sh
+for i in $USER_HOME/scripts/*.sh
 do
      cp -a $i ${i%%.sh}
 done
 
-rm ~/scripts/*.sh
-cp ~/scripts/* /usr/local/bin/
-rm -r ~/scripts/
+rm $USER_HOME/scripts/*.sh
+rm $USER_HOME/scripts/README.md $USER_HOME/scripts/LICENSE
+cp $USER_HOME/scripts/* /usr/local/bin/
+rm -r $USER_HOME/scripts/
 # ----------------------------------------------------------------------
 
 
@@ -101,17 +104,17 @@ rm -r ~/scripts/
 # ----------------------------------------------------------------------
 ### INSTALL BASIC OS GUI ###
 apt-get install -y xorg openbox obconf
- mkdir ~/.config
- cp -r /etc/xdg/openbox ~/.config
- cp -r ~/linux_setup/resources/openbox ~/.config
+ mkdir $USER_HOME/.config
+ cp -r /etc/xdg/openbox $USER_HOME/.config
+ cp -r $USER_HOME/linux_setup/resources/openbox $USER_HOME/.config
 # set resolution to 1440p
- echo 'exec xrandr --output HDMI-A-0 --mode 2560x1440 &' >> ~/.config/openbox/autostart
- echo 'exec xrandr --output HDMI-1 --mode 2560x1440 &' >> ~/.config/openbox/autostart
+ echo 'exec xrandr --output HDMI-A-0 --mode 2560x1440 &' >> $USER_HOME/.config/openbox/autostart
+ echo 'exec xrandr --output HDMI-1 --mode 2560x1440 &' >> $USER_HOME/.config/openbox/autostart
 
 # if you want a lightweight login manager & configs
 # apt-get install -y slim
-#  cp ~/linux_setup/resources/slim/slim.conf /etc
-#  cp ~/linux_setup/resources/slim/background.jpg /usr/share/slim/themes/default
+#  cp $USER_HOME/linux_setup/resources/slim/slim.conf /etc
+#  cp $USER_HOME/linux_setup/resources/slim/background.jpg /usr/share/slim/themes/default
 
 ### CONVENTIONAL DESKTOP ADDITIONS ###
 # apt-get install -y tint2 # task bar
@@ -123,11 +126,11 @@ apt-get install -y xorg openbox obconf
 # ----------------------------------------------------------------------
 ### INSTALL GUI APPS ###
 apt-get install -y pcmanfm # file manager
- cp -r ~/linux_setup/resources/pcmanfm/default ~/.config/pcmanfm/default
+ cp -r $USER_HOME/linux_setup/resources/pcmanfm/default $USER_HOME/.config/pcmanfm/default
 apt-get install -y feh # frameless image viewer
 apt-get install -y mupdf # pdf viewer
 apt-get install -y geany # text editor IDE
- cp -r ~/linux_setup/resources/geany/ ~/.config/
+ cp -r $USER_HOME/linux_setup/resources/geany/ $USER_HOME/.config/
 apt-get install -y firefox-esr # firefox browser
 apt-get install -y libreoffice-writer # document writing
 apt-get install -y libreoffice-impress # slideshow design
