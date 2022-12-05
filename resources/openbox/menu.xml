@@ -396,29 +396,11 @@
 
 		<!-- System tools -->
 		<menu id="system" label="System" >
-			<item label="System update">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e sudo apt_system_update</execute></action>
-			</item>
-			<item label="Flatpak update">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e sudo flatpak update</execute></action>
-			</item>
 			<item label="PC Info">
 				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 100x30+0+0 -hold -e pcinfo</execute></action>
 			</item>
 			<item label="Memory usage">
 				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e free -h</execute></action>
-			</item>
-			<item label="Hdd usage">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -e ncdu /</execute></action>
-			</item>
-			<item label="Change resolution">
-				<action name="Execute"><execute>arandr</execute></action>
-			</item>
-			<item label="Gnome-disks">
-				<action name="Execute"><execute>gnome-disks</execute></action>
-			</item>
-			<item label="Partition manager">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo cfdisk</execute></action>
 			</item>
 
 			<separator />
@@ -431,7 +413,7 @@
 			<item label="Network usage">
 				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo nethogs</execute></action>
 			</item>
-			<item label="Network machines">
+			<item label="Scan network">
 				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo nmap $(echo $(hostname -I) | cut -d. -f 1-3 | sed 's/$/\.0\/24/g')</execute></action>
 			</item>
 			<item label="Portscan local">
@@ -440,14 +422,13 @@
 			<item label="Portscan router">
 				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo nmap $(curl -s http://whatismyip.akamai.com/)</execute></action>
 			</item>
-			<item label="Services">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo systemctl list-unit-files --type=service</execute></action>
+
+			<separator />
+			<item label="Hdd usage">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -e ncdu /</execute></action>
 			</item>
-			<item label="Power usage">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 100x50+0+0 -e sudo powertop</execute></action>
-			</item>
-			<item label="Temperature monitor">
-				<action name="Execute"><execute>xsensors</execute></action>
+			<item label="Mount diskspace">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e df -h</execute></action>
 			</item>
 			<item label="Hdd io">
 				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo iotop</execute></action>
@@ -455,36 +436,59 @@
 			<item label="Open files">
 				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 150x70+0+0 -hold -e lsof</execute></action>
 			</item>
+			<item label="Modified Files">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 150x70+0+0 -e files_modified_day</execute></action>
+			</item>
+			<item label="Accessed Files">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 150x70+0+0 -e files_accessed_day</execute></action>
+			</item>
 
 			<separator />
-			<item label="Installed apps">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 80x70+0+0 -e sudo list_manual_apps</execute></action>
-			</item>
 			<item label="Active partitions">
 				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e lsblk</execute></action>
-			</item>
-			<item label="Mount diskspace">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e df -h</execute></action>
 			</item>
 			<item label="Mount points">
 				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e findmnt</execute></action>
 			</item>
+			<item label="Gnome-disks">
+				<action name="Execute"><execute>gnome-disks</execute></action>
+			</item>
+			<item label="Partition manager">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo cfdisk</execute></action>
+			</item>
+
+			<separator />
 			<item label="Current users">
 				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e w</execute></action>
 			</item>
 			<item label="System paths">
 				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e 'echo $PATH'</execute></action>
 			</item>
+			<item label="Change resolution">
+				<action name="Execute"><execute>arandr</execute></action>
+			</item>
 			<item label="List resolutions">
 				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e xrandr</execute></action>
 			</item>
+			<item label="Power usage">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 100x50+0+0 -e sudo powertop</execute></action>
+			</item>
+			<item label="Temperature monitor">
+				<action name="Execute"><execute>xsensors</execute></action>
+			</item>
 
 			<separator />
-			<item label="Modified Files">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 150x70+0+0 -e files_modified_day</execute></action>
+			<item label="System update">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e sudo apt_system_update</execute></action>
 			</item>
-			<item label="Accessed Files">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 150x70+0+0 -e files_accessed_day</execute></action>
+			<item label="Flatpak update">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e sudo flatpak update</execute></action>
+			</item>
+			<item label="Installed apps">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 80x70+0+0 -e sudo list_manual_apps</execute></action>
+			</item>
+			<item label="Services">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo systemctl list-unit-files --type=service</execute></action>
 			</item>
 		</menu>
 

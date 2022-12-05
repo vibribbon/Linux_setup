@@ -384,7 +384,7 @@
 					<enabled>true</enabled>
 					<name>launch-run</name>
 				</startupnotify>
-				<command>gmrun</command>
+				<command>dlaunch</command>
 			</action>
 		</keybind>
 		<keybind key="W-w">
@@ -393,7 +393,16 @@
 					<enabled>true</enabled>
 					<name>menu_bookmark</name>
 				</startupnotify>
-				<command>"xdotool keyup Super_L type $(cat ~/files/bookmarks.txt | dmenu -l 50 | cut -d' ' -f1)"</command>
+				<command>bmark</command>
+			</action>
+		</keybind>
+		<keybind key="W-S-w">
+			<action name="Execute">
+				<startupnotify>
+					<enabled>true</enabled>
+					<name>menu_pbookmark</name>
+				</startupnotify>
+				<command>pbmark</command>
 			</action>
 		</keybind>
 		<keybind key="Print">
@@ -401,13 +410,7 @@
 				<command>xwd -out ~/screenshot.xwd</command>
 			</action>
 		</keybind>
-		<!-- Screenshot the selected screen
-		<keybind key="A-Print">
-			<action name="Execute">
-				<command>xwd -out ~/screenshot.xwd</command>
-			</action>
-		</keybind>
-		-->
+
 
 		<!-- 2 screen split -->
 		<keybind key="W-Left">
