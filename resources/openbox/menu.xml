@@ -481,10 +481,10 @@
 
 			<separator />
 			<item label="Modified Files">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 150x70+0+0 -e ~/scripts/./find_files_modified_day.sh</execute></action>
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 150x70+0+0 -e files_modified_day</execute></action>
 			</item>
 			<item label="Accessed Files">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 150x70+0+0 -e ~/scripts/./find_files_accessed_day.sh</execute></action>
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 150x70+0+0 -e files_accessed_day</execute></action>
 			</item>
 		</menu>
 
