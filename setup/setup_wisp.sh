@@ -227,3 +227,9 @@ apt-get install -y python3 python3-pip # install python
 # ----------------------------------------------------------------------
 
 
+# ----------------------------------------------------------------------
+### CONVERT FOLDER OWNERSHIP ###
+# change to the required username
+chown -R vibri $USER_HOME
+# ----------------------------------------------------------------------
+
