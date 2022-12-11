@@ -102,8 +102,8 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 # User specific aliases and functions
-bind '"\e[A": history-search-backward'
-bind '"\e[B": history-search-forward'
+# bind '"\e[A": history-search-backward'
+# bind '"\e[B": history-search-forward'
 alias xterm='xterm -fa default -fs 12'
 
 
