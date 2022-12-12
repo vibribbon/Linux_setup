@@ -554,28 +554,28 @@
 		<!-- Common log files-->
 		<menu id="logs" label="logs" >
 			<item label="System Log (static)">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo nano /var/log/syslog</execute></action>
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo less +G /var/log/syslog</execute></action>
 			</item>
 			<item label="System Log (follow)">
 				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo tail -f /var/log/syslog</execute></action>
 			</item>
 			<item label="Authorisations Log">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo nano /var/log/auth.log</execute></action>
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo less +G /var/log/auth.log</execute></action>
 			</item>
 			<item label="Kernel Log">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo nano /var/log/kern.log</execute></action>
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo less +G /var/log/kern.log</execute></action>
 			</item>
 			<item label="Drivers Log">
 				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e sudo dmesg</execute></action>
 			</item>
 			<item label="Apt Changes Log">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo nano /var/log/apt/history.log</execute></action>
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo less +G /var/log/apt/history.log</execute></action>
 			</item>
 			<item label="Firewall Log (ufw)">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo nano /var/log/apt/ufw.log</execute></action>
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo less +G /var/log/ufw.log</execute></action>
 			</item>
 			<item label="Daemon / Services Log">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo nano /var/log/apt/daemon.log</execute></action>
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo less +G /var/log/daemon.log</execute></action>
 			</item>
 		</menu>
 
