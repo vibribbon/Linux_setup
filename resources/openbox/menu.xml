@@ -374,6 +374,9 @@
 			<item label="Flatseal-f">
 				<action name="Execute"><execute>flatpak run com.github.tchx84.Flatseal</execute></action>
 			</item>
+			<item label="ProtonUp-Qt">
+				<action name="Execute"><execute>flatpak run net.davidotek.pupgui2</execute></action>
+			</item>
 
 			<separator />
 			<item label="St terminal">
