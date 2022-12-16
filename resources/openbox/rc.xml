@@ -410,9 +410,14 @@
 				<command>xwd -out ~/screenshot.xwd</command>
 			</action>
 		</keybind>
+		<keybind key="W-a">
+			<action name="ShowMenu">
+				<menu>root-menu</menu>
+			</action>
+		</keybind>
 
 
-		<!-- 2 screen split -->
+		<!-- 2 screen split (x2 horizontal by x1 vertical columns) -->
 		<keybind key="W-Left">
 		<action name="Unmaximize" />
 		<action name="MoveResizeTo">
@@ -431,6 +436,8 @@
 			<height>100%</height>
 		</action>
 		</keybind>
+
+		<!-- 2 screen split (x1 horizontal by x2 vertical columns) -->
 		<keybind key="W-Up">
 		<action name="Unmaximize" />
 		<action name="MoveResizeTo">
@@ -450,7 +457,36 @@
 		</action>
 		</keybind>
 
-		<!-- 4 screen split -->
+		<!-- 3 screen split (x3 horizontal by x1 vertical columns) -->
+		<keybind key="W-A-Left">
+		<action name="Unmaximize" />
+		<action name="MoveResizeTo">
+			<x>0</x>
+			<y>0</y>
+			<width>33%</width>
+			<height>100%</height>
+		</action>
+		</keybind>
+		<keybind key="W-A-Right">
+		<action name="Unmaximize" />
+		<action name="MoveResizeTo">
+			<x>-0</x>
+			<y>0</y>
+			<width>33%</width>
+			<height>100%</height>
+		</action>
+		</keybind>
+		<keybind key="W-A-Down">
+		<action name="Unmaximize" />
+		<action name="MoveResizeTo">
+			<x>33%</x>
+			<y>0</y>
+			<width>33%</width>
+			<height>100%</height>
+		</action>
+		</keybind>
+
+		<!-- 4 screen split (x2 horizontal by x2 vertical columns) -->
 		<keybind key="W-C-Left">
 		<action name="Unmaximize" />
 		<action name="MoveResizeTo">
@@ -805,6 +841,7 @@
 					<menu>client-list-combined-menu</menu>
 				</action>
 			</mousebind>
+			<!-- Show the main right click menu -->
 			<mousebind button="Right" action="Press">
 				<action name="ShowMenu">
 					<menu>root-menu</menu>
