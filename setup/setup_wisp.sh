@@ -66,6 +66,7 @@ apt-get install -y rsync # backup and folder sync tool
 apt-get install -y cups # printer server
 apt-get install -y ncal # basic calendar
 apt-get install -y slock # simple screen locker
+apt-get install -y icdiff # colourised file compare (diff)
 
 apt-get install -y nano # cli text editor (often installed by default)
 # Setup nanorc
