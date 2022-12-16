@@ -66,7 +66,7 @@ apt-get install -y rsync # backup and folder sync tool
 apt-get install -y cups # printer server
 apt-get install -y ncal # basic calendar
 apt-get install -y slock # simple screen locker
-apt-get install -y icdiff # colourised file compare (diff)
+apt-get install -y icdiff # colorised file compare (diff)
 
 apt-get install -y nano # cli text editor (often installed by default)
 # Setup nanorc
@@ -225,6 +225,20 @@ apt-get install -y python3 python3-pip # install python
 
 # Install Lutris
 # sudo flatpak install lutris
+# ----------------------------------------------------------------------
+
+
+# ----------------------------------------------------------------------
+### LOGIN OPTIONS ###
+# Auto start GUI (startx) once correct password entered
+echo '' >> $USER_HOME/.profile
+echo '# run startx at login (/dev/tty1 is the default tty terminal)' >> $USER_HOME/.profile
+echo '[ "$(tty)" = "/dev/tty1" ] && exec startx' >> $USER_HOME/.profile
+
+# Auto enter username at logon (password still required)
+mkdir /etc/systemd/system/getty@tty1.service.d
+cp $USER_HOME/linux_setup/resources/agetty/override.conf /etc/systemd/system/getty@tty1.service.d/
+
 # ----------------------------------------------------------------------
 
 
