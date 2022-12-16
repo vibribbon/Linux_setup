@@ -57,7 +57,7 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -102,9 +102,10 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 # User specific aliases and functions
-# bind '"\e[A": history-search-backward'
-# bind '"\e[B": history-search-forward'
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
 alias xterm='xterm -fa default -fs 12'
+alias uxterm='uxterm -fa default -fs 12'
 
 
 # enable programmable completion features (you don't need to enable
