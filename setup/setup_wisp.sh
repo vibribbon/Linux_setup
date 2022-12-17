@@ -11,7 +11,7 @@
 # ----------------------------------------------------------------------
 ### CONFIGURE CORE DEBIAN REPOS ###
 # this file contains all the non-open repos and backports for debian 11
-cp $USER_HOME/linux_setup/resources/apt/sources.list /etc/apt/
+cp $HOME/linux_setup/resources/apt/sources.list /etc/apt/
 apt-get update
 # ----------------------------------------------------------------------
 
@@ -28,9 +28,9 @@ echo 'vibri ALL=(ALL) NOPASSWD: /sbin/poweroff, /sbin/reboot, /sbin/shutdown' >>
 # ----------------------------------------------------------------------
 ### SETUP ENVIRONMENT ###
 # add the path environment for sbin to ease typing
-echo 'export PATH="/sbin:$PATH"' >> $USER_HOME/.profile
+echo 'export PATH="/sbin:$PATH"' >> $HOME/.profile
 # setup bashrc
-cp $USER_HOME/linux_setup/resources/.bashrc $USER_HOME/.bashrc
+cp $HOME/linux_setup/resources/.bashrc $HOME/.bashrc
 # ----------------------------------------------------------------------
 
 
@@ -47,19 +47,17 @@ apt-get install -y git # code project management
 
 
 # ----------------------------------------------------------------------
-### INSTALL & SETUP CLI APPS ###
+### INSTALL & SETUP TERMINAL APPS ###
 apt-get install -y p7zip-full p7zip-rar # full 7zip package
 apt-get install -y ranger # cli file manager
 apt-get install -y tree # folder tree mapping
 apt-get install -y ncdu # disk usage analyser
-
 apt-get install -y ufw # simple firewall
 apt-get install -y aria2 # wget alternative download manager
 apt-get install -y curl # flexible download manager
 apt-get install -y iftop # internet monitor
 apt-get install -y nethogs # list apps using the most bandwidth
 apt-get install -y ssh # remote terminal
-
 apt-get install -y htop # system performance
 apt-get install -y powertop # system energy usage
 apt-get install -y rsync # backup and folder sync tool
@@ -70,11 +68,11 @@ apt-get install -y icdiff # colorised file compare (diff)
 
 apt-get install -y nano # cli text editor (often installed by default)
 # Setup nanorc
- cp $USER_HOME/linux_setup/resources/nano/nanorc $USER_HOME/.nanorc
+ cp $HOME/linux_setup/resources/nano/nanorc $HOME/.nanorc
 
 # apt-get install -y vim # advanced cli text editor
 # Setup vimrc
-# cp $USER_HOME/linux_setup/resources/.vimrc $USER_HOME/.vimrc
+# cp $HOME/linux_setup/resources/.vimrc $HOME/.vimrc
 
 # useful optional extras
 # apt-get install -y bc # basic interactive calculator
@@ -91,20 +89,20 @@ apt-get install -y nano # cli text editor (often installed by default)
 ### SCRIPTS ###
 # setup local scripts folder and make executable (requires git)
 git clone https://github.com/vibribbon/scripts
-chown -R root $USER_HOME/scripts/
-chmod -R 755 $USER_HOME/scripts/
+chown -R root $HOME/scripts/
+chmod -R 755 $HOME/scripts/
 
 # copy the files and remove their extension
-for i in $USER_HOME/scripts/*.sh
+for i in $HOME/scripts/*.sh
 do
      cp -a $i ${i%%.sh}
 done
 
 # Cleanup and move to /usr/local/bin for systemwide usage
-rm $USER_HOME/scripts/*.sh
-rm $USER_HOME/scripts/README.md $USER_HOME/scripts/LICENSE
-cp $USER_HOME/scripts/* /usr/local/bin/
-rm -r $USER_HOME/scripts/
+rm $HOME/scripts/*.sh
+rm $HOME/scripts/README.md $HOME/scripts/LICENSE
+cp $HOME/scripts/* /usr/local/bin/
+rm -r $HOME/scripts/
 # ----------------------------------------------------------------------
 
 
@@ -128,17 +126,17 @@ apt-get install -y firmware-amd-graphics linux-image-amd64
 ### INSTALL BASIC OS GUI ###
 # Install xorg display manager, openbox window manager, obconf utility
 apt-get install -y xorg openbox obconf
- mkdir $USER_HOME/.config
- cp -r /etc/xdg/openbox $USER_HOME/.config
- cp -r $USER_HOME/linux_setup/resources/openbox $USER_HOME/.config
+ mkdir $HOME/.config
+ cp -r /etc/xdg/openbox $HOME/.config
+ cp -r $HOME/linux_setup/resources/openbox $HOME/.config
 # set resolution to 1440p
- echo 'exec xrandr --output HDMI-A-0 --mode 2560x1440 &' >> $USER_HOME/.config/openbox/autostart
- echo 'exec xrandr --output HDMI-1 --mode 2560x1440 &' >> $USER_HOME/.config/openbox/autostart
+ echo 'exec xrandr --output HDMI-A-0 --mode 2560x1440 &' >> $HOME/.config/openbox/autostart
+ echo 'exec xrandr --output HDMI-1 --mode 2560x1440 &' >> $HOME/.config/openbox/autostart
 
 # if you want a lightweight login manager & configs
 # apt-get install -y slim
-#  cp $USER_HOME/linux_setup/resources/slim/slim.conf /etc
-#  cp $USER_HOME/linux_setup/resources/slim/background.jpg /usr/share/slim/themes/default
+#  cp $HOME/linux_setup/resources/slim/slim.conf /etc
+#  cp $HOME/linux_setup/resources/slim/background.jpg /usr/share/slim/themes/default
 
 # Optional conventional desktop additions
 # apt-get install -y tint2 # task bar
@@ -152,11 +150,11 @@ apt-get install -y xorg openbox obconf
 # ----------------------------------------------------------------------
 ### INSTALL GUI APPS ###
 apt-get install -y pcmanfm # file manager
- cp -r $USER_HOME/linux_setup/resources/pcmanfm/default $USER_HOME/.config/pcmanfm/default
+ cp -r $HOME/linux_setup/resources/pcmanfm/default $HOME/.config/pcmanfm/default
 apt-get install -y feh # frameless image viewer
 apt-get install -y mupdf # pdf viewer
 apt-get install -y geany # text editor IDE
- cp -r $USER_HOME/linux_setup/resources/geany/ $USER_HOME/.config/
+ cp -r $HOME/linux_setup/resources/geany/ $HOME/.config/
 apt-get install -y firefox-esr # firefox browser
 apt-get install -y libreoffice-writer # document writing
 apt-get install -y libreoffice-impress # slideshow design
@@ -182,8 +180,7 @@ apt-get install -y bleachbit # system cleanup
 apt-get install -y youtube-dl # youtube downloader & media player
 apt-get install -y xarchiver # compression front end
 apt-get install -y arandr # monitor resolution set
-apt-get install -y gufw # ufw firewall front end
-# apt-get install -y galculator # calculator
+apt-get install -y gufw # ufw firewall front end (if using ufw)
 apt-get install -y clamav clamtk # virus scanner and interface
 
 ### FLATPAK APPS ###
@@ -202,6 +199,7 @@ sudo flatpak install flatseal # security for flatpak containers
 # apt-get install -y digikam # image viewer and organiser
 # apt-get install -y conky # system monitor
 # apt-get install -y stacer # system monitor
+# apt-get install -y galculator # calculator
 # ----------------------------------------------------------------------
 
 
@@ -231,13 +229,13 @@ apt-get install -y python3 python3-pip # install python
 # ----------------------------------------------------------------------
 ### LOGIN OPTIONS ###
 # Auto start GUI (startx) once correct password entered
-echo '' >> $USER_HOME/.profile
-echo '# run startx at login (/dev/tty1 is the default tty terminal)' >> $USER_HOME/.profile
-echo '[ "$(tty)" = "/dev/tty1" ] && exec startx' >> $USER_HOME/.profile
+echo '' >> $HOME/.profile
+echo '# run startx at login (/dev/tty1 is the default tty terminal)' >> $HOME/.profile
+echo '[ "$(tty)" = "/dev/tty1" ] && exec startx' >> $HOME/.profile
 
 # Auto enter username at logon (password still required)
 mkdir /etc/systemd/system/getty@tty1.service.d
-cp $USER_HOME/linux_setup/resources/agetty/override.conf /etc/systemd/system/getty@tty1.service.d/
+cp $HOME/linux_setup/resources/agetty/override.conf /etc/systemd/system/getty@tty1.service.d/
 
 # ----------------------------------------------------------------------
 
@@ -245,6 +243,6 @@ cp $USER_HOME/linux_setup/resources/agetty/override.conf /etc/systemd/system/get
 # ----------------------------------------------------------------------
 ### CONVERT FOLDER OWNERSHIP ###
 # change to the required username
-chown -R vibri $USER_HOME
+chown -R vibri $HOME
 # ----------------------------------------------------------------------
 
