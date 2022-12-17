@@ -416,7 +416,7 @@
 			<item label="Network usage">
 				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo nethogs</execute></action>
 			</item>
-			<item label="Scan network">
+			<item label="Nmap Scan network">
 				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e sudo netscan</execute></action>
 			</item>
 
