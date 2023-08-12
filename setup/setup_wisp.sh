@@ -5,6 +5,7 @@
 # Debian setup
 # Modular file - comment/uncomment as required for your setup.
 # Install your Debian setup of choice first - use a STABLE version not testing (no security updates)
+# recommended to run as su from main user account
 # ----------------------------------------------------------------------
 
 
@@ -34,7 +35,7 @@ echo 'vibri ALL=(ALL) NOPASSWD: /sbin/poweroff, /sbin/reboot, /sbin/shutdown' >>
 # add the path environment for sbin to ease typing
 echo 'export PATH="/sbin:$PATH"' >> $HOME/.profile
 # setup bashrc
-cp $HOME/linux_setup/resources/.bashrc $HOME/.bashrc
+cp $HOME/openbox_setup/resources/.bashrc $HOME/.bashrc
 # ----------------------------------------------------------------------
 
 
@@ -118,9 +119,9 @@ apt-get install -y icdiff # colorised text file compare (diff)
 # apt-get install -y micro # mini text editor (nano alternative)
 # apt-get install -y swpe # old school text editor
 apt-get install -y nano # cli text editor (often installed by default)
-	cp $HOME/linux_setup/resources/nano/nanorc $HOME/.nanorc	# setup nanorc
+	cp $HOME/openbox_setup/resources/nano/nanorc $HOME/.nanorc	# setup nanorc
 # apt-get install -y vim # advanced cli text editor
-#	cp $HOME/linux_setup/resources/.vimrc $HOME/.vimrc	# setup vimrc
+#	cp $HOME/openbox_setup/resources/.vimrc $HOME/.vimrc	# setup vimrc
 # ----------------------------------------------------------------------
 
 
@@ -160,8 +161,8 @@ find /usr/local/bin/ -type f -name '*.sh' -exec sh -c '
         mv -- "$pathname" "${pathname%.sh}"	# remove .sh
     done' sh {} +
 
-chmod 755 /usr/local/bin/
-chown root /usr/local/bin/
+chmod 755 /usr/local/bin/*
+chown root /usr/local/bin/*
 # ----------------------------------------------------------------------
 
 
@@ -190,7 +191,7 @@ apt-get install -y firmware-amd-graphics linux-image-amd64	# Standard desktop
 ### INSTALL XORG OPENBOX GUI ###
 apt-get install -y xorg openbox obconf	# Install xorg display manager, openbox window manager, obconf utility
  mkdir $HOME/.config
- cp -r $HOME/linux_setup/resources/openbox $HOME/.config
+ cp -r $HOME/openbox_setup/resources/openbox $HOME/.config
 # set resolution to 1440p
  echo 'exec xrandr --output HDMI-A-0 --mode 2560x1440 &' >> $HOME/.config/openbox/autostart
  echo 'exec xrandr --output HDMI-1 --mode 2560x1440 &' >> $HOME/.config/openbox/autostart
@@ -210,7 +211,7 @@ apt-get install -y xorg openbox obconf	# Install xorg display manager, openbox w
 ### GUI APPS ###
 # File management
 apt-get install -y pcmanfm # file manager
- cp -r $HOME/linux_setup/resources/pcmanfm/default $HOME/.config/pcmanfm/default
+ cp -r $HOME/openbox_setup/resources/pcmanfm/default $HOME/.config/pcmanfm/default
 apt-get install -y xarchiver # compression front end
 # apt-get install -y thunar # file manager
 
@@ -267,7 +268,7 @@ apt-get install -y scribus # desktop publishing layout creator
 
 # Text Editors
 apt-get install -y geany # text editor IDE
- cp -r $HOME/linux_setup/resources/geany/ $HOME/.config/
+ cp -r $HOME/openbox_setup/resources/geany/ $HOME/.config/
 # apt-get install -y notepadqq # text editor api (notepad++ port)
 
 # Openbox Extensions
@@ -277,8 +278,8 @@ apt-get install -y geany # text editor IDE
 # apt-get install -y nitrogen # wallpaper manager if you dont like feh
 # apt-get install -y plank # osx style launcher
 # apt-get install -y slim # lightweight spartan login manager
-#  cp $HOME/linux_setup/resources/slim/slim.conf /etc
-#  cp $HOME/linux_setup/resources/slim/background.jpg /usr/share/slim/themes/default
+#  cp $HOME/openbox_setup/resources/slim/slim.conf /etc
+#  cp $HOME/openbox_setup/resources/slim/background.jpg /usr/share/slim/themes/default
 # apt-get install -y lightdm # larger but more modern / better looking login manager
 # ----------------------------------------------------------------------
 
@@ -309,5 +310,5 @@ echo '' >> $HOME/.profile
 
 # Auto enter username at logon (password still required)
 # mkdir /etc/systemd/system/getty@tty1.service.d
-#  cp $HOME/linux_setup/resources/agetty/override.conf /etc/systemd/system/getty@tty1.service.d/
+#  cp $HOME/openbox_setup/resources/agetty/override.conf /etc/systemd/system/getty@tty1.service.d/
 # ----------------------------------------------------------------------
