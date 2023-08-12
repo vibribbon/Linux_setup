@@ -9,9 +9,12 @@
 
 
 # ----------------------------------------------------------------------
-### CONFIGURE CORE DEBIAN REPOS ###
-# this file contains all the non-open repos and backports for debian 11
-cp $HOME/linux_setup/resources/apt/sources.list /etc/apt/
+### CONFIGURE REPOS ###
+# Setuop Apt repos to include non-free and contrib
+# Add ' non-free contrib' to the lines starting 'deb http'
+sed -i '/^deb http/ s/$/ non-free contrib/' /etc/apt/sources.list
+# comment out the source lines.
+sed -i 's/\(^deb-src http\)/# \1/g' /etc/apt/sources.list
 apt-get update
 # ----------------------------------------------------------------------
 
@@ -19,6 +22,7 @@ apt-get update
 # ----------------------------------------------------------------------
 ### SETUP SUDO ###
 # Install sudo and add user to sudoers / allow shutdown without password
+# change 'vibri' to your username
 apt-get install -y sudo
 echo 'vibri   ALL=(ALL:ALL) ALL' >> /etc/sudoers
 echo 'vibri ALL=(ALL) NOPASSWD: /sbin/poweroff, /sbin/reboot, /sbin/shutdown' >> /etc/sudoers
@@ -26,7 +30,7 @@ echo 'vibri ALL=(ALL) NOPASSWD: /sbin/poweroff, /sbin/reboot, /sbin/shutdown' >>
 
 
 # ----------------------------------------------------------------------
-### SETUP ENVIRONMENT ###
+### ENVIRONMENT ###
 # add the path environment for sbin to ease typing
 echo 'export PATH="/sbin:$PATH"' >> $HOME/.profile
 # setup bashrc
@@ -35,11 +39,12 @@ cp $HOME/linux_setup/resources/.bashrc $HOME/.bashrc
 
 
 # ----------------------------------------------------------------------
-### PACKAGE MANAGERS & SOURCE CODE REPOS ###
+### PACKAGE MANAGERS & REPOS ###
 # Setup flatpak for cutting edge packages
 apt-get install -y flatpak
 # Add flathub repo to flatpak.
  flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+ sudo flatpak install flatseal # security tool for flatpak containers
 
 # Setup git source code repo tool
 apt-get install -y git # code project management
@@ -47,159 +52,73 @@ apt-get install -y git # code project management
 
 
 # ----------------------------------------------------------------------
-### INSTALL & SETUP TERMINAL APPS ###
-apt-get install -y p7zip-full p7zip-rar # full 7zip package
+### INSTALL APPS ###
+# comment out those not required.
+
+# TERMINAL APPS
+# File Management
+apt-get install -y p7zip-full p7zip-rar # compression manager (full package)
 apt-get install -y ranger # cli file manager
-apt-get install -y tree # folder tree mapping
+# apt-get install -y tree # folder tree mapping
 apt-get install -y ncdu # disk usage analyser
+apt-get install -y rsync # backup and folder sync tool
+# apt-get install -y mc # midnight commander file manager
+
+# Networking
 apt-get install -y ufw # simple firewall
 apt-get install -y aria2 # wget alternative download manager
 apt-get install -y curl # flexible download manager
 apt-get install -y iftop # internet monitor
 apt-get install -y nethogs # list apps using the most bandwidth
-apt-get install -y ssh # remote terminal
-apt-get install -y htop # system performance
-apt-get install -y powertop # system energy usage
-apt-get install -y rsync # backup and folder sync tool
-apt-get install -y cups # printer server
-apt-get install -y ncal # basic calendar
-apt-get install -y slock # simple screen locker
-apt-get install -y icdiff # colorised file compare (diff)
-
-apt-get install -y nano # cli text editor (often installed by default)
-# Setup nanorc
- cp $HOME/linux_setup/resources/nano/nanorc $HOME/.nanorc
-
-# apt-get install -y vim # advanced cli text editor
-# Setup vimrc
-# cp $HOME/linux_setup/resources/.vimrc $HOME/.vimrc
-
-# useful optional extras
-# apt-get install -y bc # basic interactive calculator
-# apt-get install -y mc # midnight commander file manager
+apt-get install -y ssh # remote terminal control
 # apt-get install -y nmap # port mapper for diagnostics
+# apt-get install -y nmon # networking package
 # apt-get install -y traceroute # internet traceroute for diagnostics
-# apt-get install -y xfce4-terminal # alternative xfce terminal
-# apt-get install -y moc # terminal music player
+# apt-get install -y whois # internet whois identification
 # apt-get install -y w3m # terminal web browser
-# ----------------------------------------------------------------------
+# apt-get install -y elinks # terminal browser
+# apt-get install -y mutt # email client
+# apt-get install -y alpine # email client
+# apt-get install -y newsboat # rss tool
+# apt-get install -y weechat # irc client
 
+# System
+apt-get install -y htop # system performance & jobs
+apt-get install -y powertop # system energy usage
+apt-get install -y cups # printer server
+# apt-get install -y atop # system activity monitor
 
-# ----------------------------------------------------------------------
-### SCRIPTS ###
-# setup local scripts folder and make executable (requires git)
-git clone https://github.com/vibribbon/scripts
-chown -R root $HOME/scripts/
-chmod -R 755 $HOME/scripts/
+# Utilities
+apt-get install -y ncal # basic calendar
+# apt-get install -y calcurse # calendar app
+apt-get install -y slock # simple screen locker
+apt-get install -y icdiff # colorised text file compare (diff)
+# apt-get install -y mupdf-tools # extract parts from PDF files
+# apt-get install -y pandoc # text document converter
+# apt-get install -y bc # basic interactive calculator
+# apt-get install -y ttygif # create terminal gifs
+# apt-get install -y exa # colorised file lister
+# apt-get install -y peco # interactive filtering tool for file search.
+# apt-get install -y akisaurus # cli thesaurus
+# apt-get install -y stress-ng # hardware stress testing
 
-# copy the files and remove their extension
-for i in $HOME/scripts/*.sh
-do
-     cp -a $i ${i%%.sh}
-done
+# Media
+# apt-get install -y moc # terminal music player
+# apt-get install -y ffmpeg # audo & video converter
 
-# Cleanup and move to /usr/local/bin for systemwide usage
-rm $HOME/scripts/*.sh
-rm $HOME/scripts/README.md $HOME/scripts/LICENSE
-cp $HOME/scripts/* /usr/local/bin/
-rm -r $HOME/scripts/
-# ----------------------------------------------------------------------
+# Terminals
+# apt-get install -y terminator # large feature rich terminal
+# apt-get install -y guake # quake style drop down terminal
+# apt-get install -y xfce4-terminal # alternative xfce terminal
+# apt-get install -y tmux # multiple terminals within one window
 
-
-# ----------------------------------------------------------------------
-# vv GUI SYSTEMS ONLY vv
-
-# ----------------------------------------------------------------------
-### DRIVERS & FIRMWARE ###
-# non-free optional firmware if required for specific hardware
-# apt-get install -y firmware-linux firmware-linux-nonfree
-
-# AMD Graphics latest drivers - ONLY INSTALL ONE VERSION
-# Standard desktop
-apt-get install -y firmware-amd-graphics linux-image-amd64
-# More modern drivers for gaming systems only
-# apt-get install -y firmware-amd-graphics linux-image-amd64 -t bullseye-backports
-# ----------------------------------------------------------------------
-
-
-# ----------------------------------------------------------------------
-### INSTALL BASIC OS GUI ###
-# Install xorg display manager, openbox window manager, obconf utility
-apt-get install -y xorg openbox obconf
- mkdir $HOME/.config
- cp -r /etc/xdg/openbox $HOME/.config
- cp -r $HOME/linux_setup/resources/openbox $HOME/.config
-# set resolution to 1440p
- echo 'exec xrandr --output HDMI-A-0 --mode 2560x1440 &' >> $HOME/.config/openbox/autostart
- echo 'exec xrandr --output HDMI-1 --mode 2560x1440 &' >> $HOME/.config/openbox/autostart
-
-# if you want a lightweight login manager & configs
-# apt-get install -y slim
-#  cp $HOME/linux_setup/resources/slim/slim.conf /etc
-#  cp $HOME/linux_setup/resources/slim/background.jpg /usr/share/slim/themes/default
-
-# Optional conventional desktop additions
-# apt-get install -y tint2 # task bar
-# apt-get install -y ivman # mounts volumes
-# apt-get install -y parcellite # clipboard manager
-# apt-get install -y nitrogen # wallpaper manager if you dont like feh
-# apt-get install -y plank # osx style launcher
-# ----------------------------------------------------------------------
-
-
-# ----------------------------------------------------------------------
-### INSTALL GUI APPS ###
-apt-get install -y pcmanfm # file manager
- cp -r $HOME/linux_setup/resources/pcmanfm/default $HOME/.config/pcmanfm/default
-apt-get install -y feh # frameless image viewer
-apt-get install -y mupdf # pdf viewer
-apt-get install -y geany # text editor IDE
- cp -r $HOME/linux_setup/resources/geany/ $HOME/.config/
-apt-get install -y firefox-esr # firefox browser
-apt-get install -y libreoffice-writer # document writing
-apt-get install -y libreoffice-impress # slideshow design
-apt-get install -y libreoffice-calc # spreadsheet creation
-apt-get install -y scribus # desktop publishing layout creator
-# apt-get install -y calibre # ebook mangement
-# apt-get install -y pandoc # document conversion
-# apt-get install -y r-base # r development
-apt-get install -y gimp # photo editor
-# apt-get install -y inkscape # technical drawing package
-# apt-get install -y shotcut # non-linear video editor
-# apt-get install -y handbrake # audio video encoder
-# apt-get install -y audacity # non-linear audio editor
-# apt-get install -y blender # rendering and 3d printing
-# apt-get install -y krita # painting package
-# apt-get install -y darktable # image viewer and organiser
-
-### UTILITIES ###
-apt-get install -y pulseaudio pavucontrol # sound settings and volume control
-apt-get install -y xsensors # system temperature monitoring
-apt-get install -y gnome-disk-utility # partition manager
-apt-get install -y bleachbit # system cleanup
-apt-get install -y youtube-dl # youtube downloader & media player
-apt-get install -y xarchiver # compression front end
-apt-get install -y arandr # monitor resolution set
-apt-get install -y gufw # ufw firewall front end (if using ufw)
-apt-get install -y clamav clamtk # virus scanner and interface
-
-### FLATPAK APPS ###
-sudo flatpak install flatseal # security for flatpak containers
-# sudo flatpak install rstudio # front end dev envirnment for r
-
-### COMMON OPTIONAL ALTERNATIVES ###
-# apt-get install -y chromium # chromium browser
-# apt-get install -y mirage # image viewer
-# apt-get install -y vlc # media player
-# apt-get install -y notepadqq # text editor api (notepad++ port)
-# apt-get install -y synaptic # visual package manager
-# apt-get install -y gparted # partition manager
-# apt-get install -y thunar # file manager
-# apt-get install -y transmission # download manager
-# apt-get install -y digikam # image viewer and organiser
-# apt-get install -y conky # system monitor
-# apt-get install -y stacer # system monitor
-# apt-get install -y galculator # calculator
+# Text Editors
+# apt-get install -y micro # mini text editor (nano alternative)
+# apt-get install -y swpe # old school text editor
+apt-get install -y nano # cli text editor (often installed by default)
+	cp $HOME/linux_setup/resources/nano/nanorc $HOME/.nanorc	# setup nanorc
+# apt-get install -y vim # advanced cli text editor
+#	cp $HOME/linux_setup/resources/.vimrc $HOME/.vimrc	# setup vimrc
 # ----------------------------------------------------------------------
 
 
@@ -215,34 +134,178 @@ apt-get install -y python3 python3-pip # install python
 
 
 # ----------------------------------------------------------------------
-### GAMING SYSTEMS ONLY ###
-# install steam (requires the i386 architecture)
-# dpkg --add-architecture i386
-# apt-get update
-# apt-get install -y steam
+### LOCAL SCRIPTS ###
+# Install local scrips from github repos
+git clone https://github.com/vibribbon/bookmarks $HOME/dev/bmark/	# tdmenu bookmark launcher (browser independant)
+git clone https://github.com/vibribbon/weather $HOME/dev/weather/	# show BBC weather for a location
+git clone https://github.com/vibribbon/launcher $HOME/dev/launcher/	# dmenu quick launcher with history
+git clone https://github.com/vibribbon/timezone $HOME/dev/timezone/	# timezone calculator
+git clone https://github.com/vibribbon/rss_news $HOME/dev/rss_news/	# rss feed reader (browser & cli version available)
+git clone https://github.com/vibribbon/pcinfo $HOME/dev/pcinfo/	# List PC specs and status
+git clone https://github.com/vibribbon/recently_accessed $HOME/dev/recent/	# rile usage and modified history
+git clone https://github.com/vibribbon/netscan $HOME/dev/netscan/	# portscan local network
+git clone https://github.com/vibribbon/system_audit_and_cleanup $HOME/dev/system_audit/	# search for potentially removable files and permissions concerns
+git clone https://github.com/vibribbon/list_manual_apps $HOME/dev/list_manual_apps/	# list all apps manually installed
+git clone https://github.com/vibribbon/zip_all_folders_individual $HOME/dev/zip_folders/	# zip folders into individual 7zip files.
+git clone https://github.com/vibribbon/apt_system_update $HOME/dev/apt_system_update/	# quick update and clean script using apt
+git clone https://github.com/vibribbon/file_renamer $HOME/dev/file_renamer/	# rename camel case into snake case
 
-# Install Lutris
-# sudo flatpak install lutris
-# ----------------------------------------------------------------------
+# copy the files to usr/local for publis execution and remove their extension
+find ~/dev/ -type f | grep "\.sh" | xargs cp -t /usr/local/bin/
 
+find /usr/local/bin/ -type f -name '*.sh' -exec sh -c '
+    for pathname do
+        mv -- "$pathname" "${pathname%.sh}"	# remove .sh
+    done' sh {} +
 
-# ----------------------------------------------------------------------
-### LOGIN OPTIONS ###
-# Auto start GUI (startx) once correct password entered
-echo '' >> $HOME/.profile
-echo '# run startx at login (/dev/tty1 is the default tty terminal)' >> $HOME/.profile
-echo '[ "$(tty)" = "/dev/tty1" ] && exec startx' >> $HOME/.profile
-
-# Auto enter username at logon (password still required)
-mkdir /etc/systemd/system/getty@tty1.service.d
-cp $HOME/linux_setup/resources/agetty/override.conf /etc/systemd/system/getty@tty1.service.d/
-
+chmod 755 /usr/local/bin/
+chown root /usr/local/bin/
 # ----------------------------------------------------------------------
 
 
 # ----------------------------------------------------------------------
 ### CONVERT FOLDER OWNERSHIP ###
-# change to the required username
-chown -R vibri $HOME
+chown -R vibri $HOME  # change to the required username (replace vibri)
 # ----------------------------------------------------------------------
 
+
+# ----------------------------------------------------------------------
+# vv GUI SYSTEMS ONLY BELOW THIS POINT vv
+# ----------------------------------------------------------------------
+
+
+# ----------------------------------------------------------------------
+### DRIVERS & FIRMWARE ###
+# apt-get install -y firmware-linux firmware-linux-nonfree	# non-free optional firmware if required for specific hardware
+
+# AMD Graphics latest drivers - ONLY INSTALL ONE VERSION
+apt-get install -y firmware-amd-graphics linux-image-amd64	# Standard desktop
+# apt-get install -y firmware-amd-graphics linux-image-amd64 -t bookworm-backports	# cutting edge drivers for gaming systems only change debian version as required.
+# ----------------------------------------------------------------------
+
+
+# ----------------------------------------------------------------------
+### INSTALL XORG OPENBOX GUI ###
+apt-get install -y xorg openbox obconf	# Install xorg display manager, openbox window manager, obconf utility
+ mkdir $HOME/.config
+ cp -r $HOME/linux_setup/resources/openbox $HOME/.config
+# set resolution to 1440p
+ echo 'exec xrandr --output HDMI-A-0 --mode 2560x1440 &' >> $HOME/.config/openbox/autostart
+ echo 'exec xrandr --output HDMI-1 --mode 2560x1440 &' >> $HOME/.config/openbox/autostart
+# or set resolution to 1080p
+# echo 'exec xrandr --output HDMI-A-0 --mode 1920x1080 &' >> $HOME/.config/openbox/autostart
+# echo 'exec xrandr --output HDMI-1 --mode 1920x1080 &' >> $HOME/.config/openbox/autostart
+# ----------------------------------------------------------------------
+
+
+# ----------------------------------------------------------------------
+### INSTALL WAYLAND WESTON GUI ###
+# apt-get install -y weston	# Install weston basic gui for wayland
+# ----------------------------------------------------------------------
+
+
+# ----------------------------------------------------------------------
+### GUI APPS ###
+# File management
+apt-get install -y pcmanfm # file manager
+ cp -r $HOME/linux_setup/resources/pcmanfm/default $HOME/.config/pcmanfm/default
+apt-get install -y xarchiver # compression front end
+# apt-get install -y thunar # file manager
+
+# System
+# apt-get install -y synaptic # visual package manager
+# apt-get install -y gparted # partition manager
+apt-get install -y gnome-disk-utility # partition manager
+
+# Network
+apt-get install -y firefox-esr # firefox browser
+# apt-get install -y chromium # chromium browser
+apt-get install -y gufw # ufw firewall front end (if using ufw)
+# apt-get install -y transmission # download manager
+
+# Media
+apt-get install -y feh # frameless image viewer
+# apt-get install -y sxiv # very lightweight image viewer
+# apt-get install -y nomacs # larger image viewer and organiser
+# apt-get install -y qimgv # another image viewer
+# apt-get install -y mirage # another image viewer
+# apt-get install -y viewnior # very basic image viewer
+apt-get install -y mupdf # pdf viewer
+apt-get install -y gimp # photo editor
+# apt-get install -y inkscape # drawing package
+# apt-get install -y krita # painting package
+# apt-get install -y darktable # image viewer and organiser
+# apt-get install -y digikam # image viewer and organiser
+# apt-get install -y shotcut # non-linear video editor
+# apt-get install -y kdenlive # non-linear video editor (using KDE)
+# apt-get install -y handbrake # audio video encoder
+# apt-get install -y vlc # media player
+# apt-get install -y audacity # non-linear audio editor
+# apt-get install -y blender # rendering and 3d printing
+apt-get install -y youtube-dl # youtube downloader & media player
+
+# Utilities
+apt-get install -y pulseaudio pavucontrol # sound settings and volume control
+apt-get install -y xsensors # system temperature monitoring
+apt-get install -y bleachbit # system cleanup
+apt-get install -y arandr # monitor resolution set
+# apt-get install -y conky # system monitor
+# apt-get install -y stacer # system monitor
+# apt-get install -y galculator # calculator
+apt-get install -y clamav clamtk # virus scanner and interface
+
+# Production
+apt-get install -y libreoffice-writer # document writing
+apt-get install -y libreoffice-impress # slideshow design
+apt-get install -y libreoffice-calc # spreadsheet creation
+apt-get install -y scribus # desktop publishing layout creator
+# apt-get install -y calibre # ebook mangement
+# apt-get install -y r-base # r development
+# sudo flatpak install rstudio # front end dev envirnment for r (flatpak)
+
+# Text Editors
+apt-get install -y geany # text editor IDE
+ cp -r $HOME/linux_setup/resources/geany/ $HOME/.config/
+# apt-get install -y notepadqq # text editor api (notepad++ port)
+
+# Openbox Extensions
+# apt-get install -y tint2 # simple task bar
+# apt-get install -y ivman # mounts volumes
+# apt-get install -y parcellite # clipboard manager
+# apt-get install -y nitrogen # wallpaper manager if you dont like feh
+# apt-get install -y plank # osx style launcher
+# apt-get install -y slim # lightweight spartan login manager
+#  cp $HOME/linux_setup/resources/slim/slim.conf /etc
+#  cp $HOME/linux_setup/resources/slim/background.jpg /usr/share/slim/themes/default
+# apt-get install -y lightdm # larger but more modern / better looking login manager
+# ----------------------------------------------------------------------
+
+
+# ----------------------------------------------------------------------
+### GAMING INFRASTRUCTURE AND DRIVERS ###
+# dpkg --add-architecture i386	# install i386 architecture for steam
+#  apt-get update
+#  apt-get install -y steam	# steam gaming frontend
+# sudo flatpak install lutris	# wine / proton emulation plus frontend and runners.
+# ----------------------------------------------------------------------
+
+
+# ----------------------------------------------------------------------
+### NON REPO APPS ###
+# meowsql # port of heidisql
+# waybox # wayland port of openbox
+# lightworks # commercial video editor
+# ----------------------------------------------------------------------
+
+
+# ----------------------------------------------------------------------
+### LOGIN OPTIONS ###
+# Auto start GUI (startx) once correct password entered - if not using login manager.
+echo '' >> $HOME/.profile
+ echo '# run startx at login (/dev/tty1 is the default tty terminal)' >> $HOME/.profile
+ echo '[ "$(tty)" = "/dev/tty1" ] && exec startx' >> $HOME/.profile
+
+# Auto enter username at logon (password still required)
+# mkdir /etc/systemd/system/getty@tty1.service.d
+#  cp $HOME/linux_setup/resources/agetty/override.conf /etc/systemd/system/getty@tty1.service.d/
+# ----------------------------------------------------------------------
