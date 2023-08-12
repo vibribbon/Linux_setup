@@ -86,6 +86,7 @@ apt-get install -y ssh # remote terminal control
 apt-get install -y htop # system performance & jobs
 apt-get install -y powertop # system energy usage
 apt-get install -y cups # printer server
+apt-get install -y radeontop # amd radeon monitoring toolkit
 # apt-get install -y atop # system activity monitor
 
 # Utilities
@@ -101,6 +102,7 @@ apt-get install -y icdiff # colorised text file compare (diff)
 # apt-get install -y peco # interactive filtering tool for file search.
 # apt-get install -y akisaurus # cli thesaurus
 # apt-get install -y stress-ng # hardware stress testing
+# apt-get install -y fastboot # android system toolkit
 
 # Media
 # apt-get install -y moc # terminal music player
