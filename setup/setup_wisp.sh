@@ -8,15 +8,27 @@
 # recommended to run as setup_basics.sh as su, then run this script as sudo from main user account
 # ----------------------------------------------------------------------
 
+# ----------------------------------------------------------------------
+echo 'Starting setup for the following user'
+my_username=$(who | head -n 1 | cut -d ' ' -f 1)
+echo $my_username
+read -p "Enter y to continue: " response_yn
+if [[ $response_yn == "y" || $response_yn == "Y" ]]
+then
+	echo 'Starting Install'
+else
+	exit 0
+fi
+# ----------------------------------------------------------------------
 
 # ----------------------------------------------------------------------
 ### CONFIGURE REPOS ###
-# Setuop Apt repos to include non-free and contrib
+# Setup Apt repos to include non-free and contrib
 # Add ' non-free contrib' to the lines starting 'deb http'
-# sed -i '/^deb http/ s/$/ non-free contrib/' /etc/apt/sources.list
+sed -i '/^deb http/ s/$/ non-free contrib/' /etc/apt/sources.list
 # comment out the source lines.
-# sed -i 's/\(^deb-src http\)/# \1/g' /etc/apt/sources.list
-# apt-get update
+sed -i 's/\(^deb-src http\)/# \1/g' /etc/apt/sources.list
+apt-get update	# refresh repos
 # ----------------------------------------------------------------------
 
 
@@ -24,18 +36,18 @@
 ### SETUP SUDO ###
 # Install sudo and add user to sudoers / allow shutdown without password
 # change 'vibri' to your username
-# apt-get install -y sudo
-# echo 'vibri   ALL=(ALL:ALL) ALL' >> /etc/sudoers
-# echo 'vibri ALL=(ALL) NOPASSWD: /sbin/poweroff, /sbin/reboot, /sbin/shutdown' >> /etc/sudoers
+apt-get install -y sudo
+echo "${my_username}   ALL=(ALL:ALL) ALL" >> /etc/sudoers
+echo "${my_username} ALL=(ALL) NOPASSWD: /sbin/poweroff, /sbin/reboot, /sbin/shutdown" >> /etc/sudoers
 # ----------------------------------------------------------------------
 
 
 # ----------------------------------------------------------------------
 ### ENVIRONMENT ###
 # add the path environment for sbin to ease typing
-echo 'export PATH="/sbin:$PATH"' >> $HOME/.profile
+echo 'export PATH="/sbin:$PATH"' >> "/home/${my_username}/.profile"
 # setup bashrc
-cp $HOME/openbox_setup/resources/.bashrc $HOME/.bashrc
+cp "/home/${my_username}/openbox_setup/resources/.bashrc" "/home/${my_username}/.bashrc"
 # ----------------------------------------------------------------------
 
 
@@ -119,9 +131,9 @@ apt-get install -y icdiff # colorised text file compare (diff)
 # apt-get install -y micro # mini text editor (nano alternative)
 # apt-get install -y swpe # old school text editor
 apt-get install -y nano # cli text editor (often installed by default)
-	cp $HOME/openbox_setup/resources/nano/nanorc $HOME/.nanorc	# setup nanorc
+	cp "/home/${my_username}/openbox_setup/resources/nano/nanorc" "/home/${my_username}/.nanorc"	# setup nanorc
 # apt-get install -y vim # advanced cli text editor
-#	cp $HOME/openbox_setup/resources/.vimrc $HOME/.vimrc	# setup vimrc
+#	cp "/home/${my_username}/openbox_setup/resources/.vimrc" "/home/${my_username}/.vimrc"	# setup vimrc
 # ----------------------------------------------------------------------
 
 
@@ -139,22 +151,22 @@ apt-get install -y python3 python3-pip # install python
 # ----------------------------------------------------------------------
 ### LOCAL SCRIPTS ###
 # Install local scrips from github repos
-git clone https://github.com/vibribbon/bookmarks $HOME/dev/bmark/	# tdmenu bookmark launcher (browser independant)
-git clone https://github.com/vibribbon/weather $HOME/dev/weather/	# show BBC weather for a location
-git clone https://github.com/vibribbon/launcher $HOME/dev/launcher/	# dmenu quick launcher with history
-git clone https://github.com/vibribbon/timezone $HOME/dev/timezone/	# timezone calculator
-git clone https://github.com/vibribbon/rss_news $HOME/dev/rss_news/	# rss feed reader (browser & cli version available)
-git clone https://github.com/vibribbon/pcinfo $HOME/dev/pcinfo/	# List PC specs and status
-git clone https://github.com/vibribbon/recently_accessed $HOME/dev/recent/	# rile usage and modified history
-git clone https://github.com/vibribbon/netscan $HOME/dev/netscan/	# portscan local network
-git clone https://github.com/vibribbon/system_audit_and_cleanup $HOME/dev/system_audit/	# search for potentially removable files and permissions concerns
-git clone https://github.com/vibribbon/list_manual_apps $HOME/dev/list_manual_apps/	# list all apps manually installed
-git clone https://github.com/vibribbon/zip_all_folders_individual $HOME/dev/zip_folders/	# zip folders into individual 7zip files.
-git clone https://github.com/vibribbon/apt_system_update $HOME/dev/apt_system_update/	# quick update and clean script using apt
-git clone https://github.com/vibribbon/file_renamer $HOME/dev/file_renamer/	# rename camel case into snake case
+git clone https://github.com/vibribbon/bookmarks "/home/${my_username}/dev/bmark/"	# tdmenu bookmark launcher (browser independant)
+git clone https://github.com/vibribbon/weather "/home/${my_username}/dev/weather/"	# show BBC weather for a location
+git clone https://github.com/vibribbon/launcher "/home/${my_username}/dev/launcher/"	# dmenu quick launcher with history
+git clone https://github.com/vibribbon/timezone "/home/${my_username}/dev/timezone/"	# timezone calculator
+git clone https://github.com/vibribbon/rss_news "/home/${my_username}/dev/rss_news/"	# rss feed reader (browser & cli version available)
+git clone https://github.com/vibribbon/pcinfo "/home/${my_username}/dev/pcinfo/"	# List PC specs and status
+git clone https://github.com/vibribbon/recently_accessed "/home/${my_username}/dev/recent/"	# rile usage and modified history
+git clone https://github.com/vibribbon/netscan "/home/${my_username}/dev/netscan/"	# portscan local network
+git clone https://github.com/vibribbon/system_audit_and_cleanup "/home/${my_username}/dev/system_audit/"	# search for potentially removable files and permissions concerns
+git clone https://github.com/vibribbon/list_manual_apps "/home/${my_username}/dev/list_manual_apps/"	# list all apps manually installed
+git clone https://github.com/vibribbon/zip_all_folders_individual "/home/${my_username}/dev/zip_folders/"	# zip folders into individual 7zip files.
+git clone https://github.com/vibribbon/apt_system_update "/home/${my_username}/dev/apt_system_update/"	# quick update and clean script using apt
+git clone https://github.com/vibribbon/file_renamer "/home/${my_username}/dev/file_renamer/"	# rename camel case into snake case
 
 # copy the files to usr/local for publis execution and remove their extension
-find ~/dev/ -type f | grep "\.sh" | xargs cp -t /usr/local/bin/
+find "/home/${my_username}/dev/" -type f | grep "\.sh" | xargs cp -t /usr/local/bin/
 
 find /usr/local/bin/ -type f -name '*.sh' -exec sh -c '
     for pathname do
@@ -168,7 +180,7 @@ chown root /usr/local/bin/*
 
 # ----------------------------------------------------------------------
 ### CONVERT FOLDER OWNERSHIP ###
-chown -R vibri $HOME  # change to the required username (replace vibri)
+chown -R $my_username "/home/${my_username}"  # change to the required username (replace vibri)
 # ----------------------------------------------------------------------
 
 
@@ -190,14 +202,14 @@ apt-get install -y firmware-amd-graphics linux-image-amd64	# Standard desktop
 # ----------------------------------------------------------------------
 ### INSTALL XORG OPENBOX GUI ###
 apt-get install -y xorg openbox obconf	# Install xorg display manager, openbox window manager, obconf utility
- mkdir $HOME/.config
- cp -r $HOME/openbox_setup/resources/openbox $HOME/.config
+ mkdir "/home/${my_username}/.config"
+ cp -r "/home/${my_username}/openbox_setup/resources/openbox" "/home/${my_username}/.config"
 # set resolution to 1440p
- echo 'exec xrandr --output HDMI-A-0 --mode 2560x1440 &' >> $HOME/.config/openbox/autostart
- echo 'exec xrandr --output HDMI-1 --mode 2560x1440 &' >> $HOME/.config/openbox/autostart
+ echo 'exec xrandr --output HDMI-A-0 --mode 2560x1440 &' >> "/home/${my_username}/.config/openbox/autostart"
+ echo 'exec xrandr --output HDMI-1 --mode 2560x1440 &' >> "/home/${my_username}/.config/openbox/autostart"
 # or set resolution to 1080p
-# echo 'exec xrandr --output HDMI-A-0 --mode 1920x1080 &' >> $HOME/.config/openbox/autostart
-# echo 'exec xrandr --output HDMI-1 --mode 1920x1080 &' >> $HOME/.config/openbox/autostart
+# echo 'exec xrandr --output HDMI-A-0 --mode 1920x1080 &' >> "/home/${my_username}/.config/openbox/autostart"
+# echo 'exec xrandr --output HDMI-1 --mode 1920x1080 &' >> "/home/${my_username}/.config/openbox/autostart"
 # ----------------------------------------------------------------------
 
 
@@ -211,7 +223,7 @@ apt-get install -y xorg openbox obconf	# Install xorg display manager, openbox w
 ### GUI APPS ###
 # File management
 apt-get install -y pcmanfm # file manager
- cp -r $HOME/openbox_setup/resources/pcmanfm/default $HOME/.config/pcmanfm/default
+ cp -r "/home/${my_username}/openbox_setup/resources/pcmanfm/default" "/home/${my_username}/.config/pcmanfm/default"
 apt-get install -y xarchiver # compression front end
 # apt-get install -y thunar # file manager
 
@@ -268,7 +280,7 @@ apt-get install -y scribus # desktop publishing layout creator
 
 # Text Editors
 apt-get install -y geany # text editor IDE
- cp -r $HOME/openbox_setup/resources/geany/ $HOME/.config/
+ cp -r "/home/${my_username}/openbox_setup/resources/geany/" "/home/${my_username}/.config/"
 # apt-get install -y notepadqq # text editor api (notepad++ port)
 
 # Openbox Extensions
@@ -278,8 +290,8 @@ apt-get install -y geany # text editor IDE
 # apt-get install -y nitrogen # wallpaper manager if you dont like feh
 # apt-get install -y plank # osx style launcher
 # apt-get install -y slim # lightweight spartan login manager
-#  cp $HOME/openbox_setup/resources/slim/slim.conf /etc
-#  cp $HOME/openbox_setup/resources/slim/background.jpg /usr/share/slim/themes/default
+#  cp "/home/${my_username}/openbox_setup/resources/slim/slim.conf" /etc
+#  cp "/home/${my_username}/openbox_setup/resources/slim/background.jpg" /usr/share/slim/themes/default
 # apt-get install -y lightdm # larger but more modern / better looking login manager
 # ----------------------------------------------------------------------
 
@@ -295,7 +307,7 @@ apt-get install -y geany # text editor IDE
 
 # ----------------------------------------------------------------------
 ### NON REPO APPS ###
-# meowsql # port of heidisql
+# meowsql # port of heidisql available as appimage
 # waybox # wayland port of openbox
 # lightworks # commercial video editor
 # ----------------------------------------------------------------------
@@ -304,11 +316,11 @@ apt-get install -y geany # text editor IDE
 # ----------------------------------------------------------------------
 ### LOGIN OPTIONS ###
 # Auto start GUI (startx) once correct password entered - if not using login manager.
-echo '' >> $HOME/.profile
- echo '# run startx at login (/dev/tty1 is the default tty terminal)' >> $HOME/.profile
- echo '[ "$(tty)" = "/dev/tty1" ] && exec startx' >> $HOME/.profile
+echo '' >> "/home/${my_username}/.profile"
+ echo '# run startx at login (/dev/tty1 is the default tty terminal)' >> "/home/${my_username}/.profile"
+ echo '[ "$(tty)" = "/dev/tty1" ] && exec startx' >> "/home/${my_username}/.profile"
 
 # Auto enter username at logon (password still required)
 # mkdir /etc/systemd/system/getty@tty1.service.d
-#  cp $HOME/openbox_setup/resources/agetty/override.conf /etc/systemd/system/getty@tty1.service.d/
+#  cp "/home/${my_username}/openbox_setup/resources/agetty/override.conf" /etc/systemd/system/getty@tty1.service.d/
 # ----------------------------------------------------------------------
