@@ -1,4 +1,4 @@
-#!/bin/bash
+de#!/bin/bash
 
 # ----------------------------------------------------------------------
 ### NOTES ###
@@ -120,6 +120,8 @@ apt-get install -y icdiff # colorised text file compare (diff)
 # Media
 # apt-get install -y moc # terminal music player
 # apt-get install -y ffmpeg # audo & video converter
+# apt-get install -y devede # comprehensive dvd creator
+# apt-get install -y xfburn # basic dvd/cd creator
 
 # Terminals
 # apt-get install -y terminator # large feature rich terminal
