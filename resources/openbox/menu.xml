@@ -417,6 +417,9 @@
 			<item label="System update">
 				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e sudo apt_system_update</execute></action>
 			</item>
+			<item label="Force witheld updates">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e sudo apt-get --with-new-pkgs upgrade</execute></action>
+			</item>
 			<item label="Flatpak update">
 				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e sudo flatpak update</execute></action>
 			</item>
