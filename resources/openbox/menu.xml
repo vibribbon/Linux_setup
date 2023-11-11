@@ -32,7 +32,7 @@
 			<action name="Execute"><execute>flatpak run net.lutris.Lutris</execute></action>
 		</item>
 		<item label="Rss Reader">
-			<action name="Execute"><execute>rssnews</execute></action>
+			<action name="Execute"><execute>rss_news</execute></action>
 		</item>
 		<item label="Volume">
 			<action name="Execute"><execute>pavucontrol</execute></action>
