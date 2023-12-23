@@ -42,10 +42,21 @@
 		<separator />
 		<!-- Major applications menu -->
 		<menu id="Apps" label="Apps" >
-			<item label="  Google Apps">
+			<item label="Browser">
+				<action name="Execute"><execute>x-www-browser</execute></action>
+			</item>
+			<item label="Rss Reader">
+				<action name="Execute"><execute>rss_news</execute></action>
+			</item>
+			<item label="RSS cli">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -e rss_news_cli</execute></action>
+			</item>
+
+			<separator />
+			<item label="[Google Apps]">
 				<action name="Execute"><execute>x-www-browser https://drive.google.com/</execute></action>
 			</item>
-			<item label="  Office 365">
+			<item label="[Office 365]">
 				<action name="Execute"><execute>x-www-browser https://www.office.com/</execute></action>
 			</item>
 			<item label="Writer">
@@ -57,32 +68,40 @@
 			<item label="Impress">
 				<action name="Execute"><execute>libreoffice --impress</execute></action>
 			</item>
-			<item label="  Slides.com">
+			<item label="[Slides]">
 				<action name="Execute"><execute>x-www-browser https://slides.com/#features</execute></action>
-			</item>
-			<item label="Rstudio">
-				<action name="Execute"><execute>rstudio</execute></action>
 			</item>
 			<item label="Scribus">
 				<action name="Execute"><execute>scribus</execute></action>
 			</item>
-			<item label="  Diagrams.net">
+			<item label="[Diagrams]">
 				<action name="Execute"><execute>x-www-browser https://app.diagrams.net/</execute></action>
 			</item>
-			<item label="  Witeboard">
+			<item label="[Witeboard]">
 				<action name="Execute"><execute>x-www-browser https://witeboard.com</execute></action>
 			</item>
 			<item label="Math">
 				<action name="Execute"><execute>libreoffice --math</execute></action>
 			</item>
-			<item label="  Math solver">
+			<item label="[Math solver]">
 				<action name="Execute"><execute>x-www-browser https://mathsolver.microsoft.com/en</execute></action>
 			</item>
-			<item label="  Overleaf LaTex">
+			<item label="[Overleaf LaTex]">
 				<action name="Execute"><execute>x-www-browser https://www.overleaf.com/register</execute></action>
 			</item>
-			<item label="  Whatsapp web">
-				<action name="Execute"><execute>x-www-browser https://web.whatsapp.com</execute></action>
+
+			<separator />
+			<item label="Geany">
+				<action name="Execute"><execute>geany</execute></action>
+			</item>
+			<item label="Rstudio">
+				<action name="Execute"><execute>rstudio</execute></action>
+			</item>
+			<item label="[Github]">
+				<action name="Execute"><execute>x-www-browser https://github.com/</execute></action>
+			</item>
+			<item label="Pastebin">
+				<action name="Execute"><execute>x-www-browser https://pastebin.com/</execute></action>
 			</item>
 
 			<separator />
@@ -107,10 +126,10 @@
 			<item label="Draw">
 				<action name="Execute"><execute>libreoffice --draw</execute></action>
 			</item>
-			<item label="  Photopea">
+			<item label="[Photopea]">
 				<action name="Execute"><execute>x-www-browser https://www.photopea.com/</execute></action>
 			</item>
-			<item label="  Piktochart">
+			<item label="[Piktochart]">
 				<action name="Execute"><execute>x-www-browser https://piktochart.com/formats/infographics/</execute></action>
 			</item>
 
@@ -140,14 +159,6 @@
 			</item>
 
 			<separator />
-			<item label="  Github">
-				<action name="Execute"><execute>x-www-browser https://github.com/</execute></action>
-			</item>
-			<item label="  Pastebin">
-				<action name="Execute"><execute>x-www-browser https://pastebin.com/</execute></action>
-			</item>
-
-			<separator />
 			<item label="Blender">
 				<action name="Execute"><execute>blender</execute></action>
 			</item>
@@ -163,88 +174,23 @@
 		 </menu>
 
 
-		<!-- Useful websites -->
-		<menu id="websites" label="Useful sites" >
-			<item label="  Duckduckgo.com">
-				<action name="Execute"><execute>x-www-browser https://lite.duckduckgo.com/lite</execute></action>
+		<!-- System utilities-->
+		<menu id="utils" label="Utilities" >
+			<item label="Terminal">
+				<action name="Execute"><execute>uxterm -fa default -fs 12</execute></action>
 			</item>
-			<item label="  Wikipedia">
-				<action name="Execute"><execute>x-www-browser https://en.m.wikipedia.org/wiki/Main_Page</execute></action>
-			</item>
-			<item label="  Wiktionary">
-				<action name="Execute"><execute>x-www-browser https://en.m.wiktionary.org/wiki/Special:Search</execute></action>
-			</item>
-			<item label="  Invidious (Youtube)">
-				<action name="Execute"><execute>x-www-browser https://invidio.xamh.de/feed/popular</execute></action>
-			</item>
-			<item label="  Google Maps">
-				<action name="Execute"><execute>x-www-browser https://www.google.com/maps</execute></action>
-			</item>
-			<item label="  Alternative to">
-				<action name="Execute"><execute>x-www-browser https://alternativeto.net/</execute></action>
-			</item>
-			<item label="  Just watch">
-				<action name="Execute"><execute>x-www-browser https://www.justwatch.com/uk</execute></action>
-			</item>
-			<item label="  Urban dictionary">
-				<action name="Execute"><execute>x-www-browser https://www.urbandictionary.com/</execute></action>
-			</item>
-			<item label="  Knowyourmeme">
-				<action name="Execute"><execute>x-www-browser https://knowyourmeme.com/</execute></action>
-			</item>
-			<item label="  Pcpartpicker">
-				<action name="Execute"><execute>x-www-browser https://uk.pcpartpicker.com/list/</execute></action>
-			</item>
-			<item label="  Snapdrop">
-				<action name="Execute"><execute>x-www-browser https://snapdrop.net/</execute></action>
-			</item>
-			<item label="  Steam250">
-				<action name="Execute"><execute>x-www-browser https://steam250.com/</execute></action>
-			</item>
-			<item label="  Google Translate">
-				<action name="Execute"><execute>x-www-browser https://translate.google.com/</execute></action>
-			</item>
-			<item label="  Qhanzi.com">
-				<action name="Execute"><execute>x-www-browser https://www.qhanzi.com/</execute></action>
+			<item label="St terminal">
+				<action name="Execute"><execute>st</execute></action>
 			</item>
 
 			<separator />
-			<item label="  Google fonts">
-				<action name="Execute"><execute>x-www-browser https://fonts.google.com/</execute></action>
+			<item label="File Manager">
+				<action name="Execute"><execute>pcmanfm</execute></action>
 			</item>
-			<item label="  Unsplash images">
-				<action name="Execute"><execute>x-www-browser https://unsplash.com/</execute></action>
-			</item>
-			<item label="  Giphy">
-				<action name="Execute"><execute>x-www-browser https://giphy.com/</execute></action>
-			</item>
-			<item label="  Thenounproject icons">
-				<action name="Execute"><execute>x-www-browser https://thenounproject.com/</execute></action>
-			</item>
-			<item label="  Copychar characters">
-				<action name="Execute"><execute>x-www-browser https://copychar.cc/popular/</execute></action>
-			</item>
-			<item label="  Print friendly">
-				<action name="Execute"><execute>x-www-browser https://www.printfriendly.com/</execute></action>
-			</item>
-			<item label="  Appimagehub">
-				<action name="Execute"><execute>x-www-browser https://www.appimagehub.com/</execute></action>
-			</item>
-			<item label="  Portableapps">
-				<action name="Execute"><execute>x-www-browser https://portableapps.com/</execute></action>
-			</item>
-			<item label="  Apk mirror">
-				<action name="Execute"><execute>x-www-browser https://www.apkmirror.com/apk/google-inc/google-play-store-android-wear/</execute></action>
-			</item>
-		</menu>
-
-
-		<!-- System utilities-->
-		<menu id="utils" label="Utilities" >
 			<item label="Ranger">
 				<action name="Execute"><execute>uxterm -fa default -fs 12 -e ranger</execute></action>
 			</item>
-			<item label="Midnight Commander">
+			<item label="MC">
 				<action name="Execute"><execute>uxterm -fa default -fs 12 -e mc</execute></action>
 			</item>
 			<item label="Tree">
@@ -253,19 +199,28 @@
 			<item label="Search">
 				<action name="Execute"><execute>catfish</execute></action>
 			</item>
+			<item label="Xarchiver">
+				<action name="Execute"><execute>xarchiver</execute></action>
+			</item>
+			<item label="bleachbit">
+				<action name="Execute"><execute>bleachbit</execute></action>
+			</item>
 
 			<separator />
 			<item label="Clock">
 				<action name="Execute"><execute>xclock -norender</execute></action>
 			</item>
 			<item label="Timezones">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -e timezone</execute></action>
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e timezone</execute></action>
+			</item>
+			<item label="Calendar 3m">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e ncal -3</execute></action>
 			</item>
 			<item label="Conky Time">
 				<action name="Execute"><execute>conky -c ~/.conky/qclocktwo-master/qclocktwo</execute></action>
 			</item>
-			<item label="Calendar 3m">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e ncal -3</execute></action>
+			<item label="Weather">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e weather</execute></action>
 			</item>
 
 			<separator />
@@ -275,14 +230,8 @@
 			<item label="stacer">
 				<action name="Execute"><execute>stacer</execute></action>
 			</item>
-			<item label="Weather">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -e weather</execute></action>
-			</item>
 			<item label="xcalc">
 				<action name="Execute"><execute>xcalc</execute></action>
-			</item>
-			<item label="Xarchiver">
-				<action name="Execute"><execute>xarchiver</execute></action>
 			</item>
 			<item label="Transmission">
 				<action name="Execute"><execute>transmission-gtk</execute></action>
@@ -290,25 +239,24 @@
 			<item label="Nitrogen">
 				<action name="Execute"><execute>nitrogen</execute></action>
 			</item>
-			<item label="bleachbit">
-				<action name="Execute"><execute>bleachbit</execute></action>
+
+			<separator />
+			<item label="Volume">
+				<action name="Execute"><execute>pavucontrol</execute></action>
 			</item>
-			<item label="Flatseal-f">
-				<action name="Execute"><execute>flatpak run com.github.tchx84.Flatseal</execute></action>
+			<item label="Alsamixer">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e alsamixer</execute></action>
+			</item>
+			<item label="Printers (cups)">
+				<action name="Execute"><execute>x-www-browser http://localhost:631</execute></action>
 			</item>
 			<item label="ProtonUp-Qt-f">
 				<action name="Execute"><execute>flatpak run net.davidotek.pupgui2</execute></action>
 			</item>
 
 			<separator />
-			<item label="St terminal">
-				<action name="Execute"><execute>st</execute></action>
-			</item>
-			<item label="Alsamixer">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -e alsamixer</execute></action>
-			</item>
-			<item label="Printers (cups)">
-				<action name="Execute"><execute>x-www-browser http://localhost:631</execute></action>
+			<item label="Flatseal-f">
+				<action name="Execute"><execute>flatpak run com.github.tchx84.Flatseal</execute></action>
 			</item>
 			<item label="Firewall (gufw)">
 				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo gufw</execute></action>
@@ -316,118 +264,72 @@
 			<item label="Virus Scanner">
 				<action name="Execute"><execute>clamtk</execute></action>
 			</item>
-			<item label="  Virustotal scanner">
+			<item label="[Virustotal scanner]">
 				<action name="Execute"><execute>x-www-browser https://www.virustotal.com/gui/home/upload</execute></action>
 			</item>
-			<item label="  Jotti scanner">
+			<item label="[Jotti scanner]">
 				<action name="Execute"><execute>x-www-browser https://virusscan.jotti.org/en</execute></action>
 			</item>
 
 			<separator />
-			<item label="  Whatsmyip.org">
+			<item label="[Whatsmyip.org]">
 				<action name="Execute"><execute>x-www-browser https://www.whatsmyip.org/</execute></action>
 			</item>
-			<item label="  Fast.com">
+			<item label="[Fast.com]">
 				<action name="Execute"><execute>x-www-browser https://fast.com/en/gb/#</execute></action>
 			</item>
-			<item label="  10minutemail">
+			<item label="[10minutemail]">
 				<action name="Execute"><execute>x-www-browser https://10minutemail.com/</execute></action>
 			</item>
 		</menu>
 
 
-		<!-- System tools -->
-		<menu id="system" label="System" >
-			<item label="PC Info">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 100x30+0+0 -hold -e pcinfo</execute></action>
+		<!-- Useful websites -->
+		<menu id="websites" label="Websites" >
+			<item label="[Duckduckgo]">
+				<action name="Execute"><execute>x-www-browser https://lite.duckduckgo.com/lite</execute></action>
 			</item>
-			<item label="Memory usage">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e free -h</execute></action>
+			<item label="[Wikipedia]">
+				<action name="Execute"><execute>x-www-browser https://en.m.wikipedia.org/wiki/Main_Page</execute></action>
 			</item>
-
-			<separator />
-			<item label="Network ports">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e ss -at</execute></action>
+			<item label="[Wiktionary]">
+				<action name="Execute"><execute>x-www-browser https://en.m.wiktionary.org/wiki/Special:Search</execute></action>
 			</item>
-			<item label="Network access">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo iftop</execute></action>
+			<item label="[Invidious (Youtube)]">
+				<action name="Execute"><execute>x-www-browser https://invidio.xamh.de/feed/popular</execute></action>
 			</item>
-			<item label="Network usage">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo nethogs</execute></action>
+			<item label="[Google Maps]">
+				<action name="Execute"><execute>x-www-browser https://www.google.com/maps</execute></action>
 			</item>
-			<item label="Nmap Scan network">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e sudo netscan</execute></action>
+			<item label="[AlternativeTo]">
+				<action name="Execute"><execute>x-www-browser https://alternativeto.net/</execute></action>
 			</item>
-
-			<separator />
-			<item label="Hdd usage">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -e ncdu /</execute></action>
+			<item label="[Just watch]">
+				<action name="Execute"><execute>x-www-browser https://www.justwatch.com/uk</execute></action>
 			</item>
-			<item label="Mount diskspace">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e df -h</execute></action>
+			<item label="[Urban dictionary]">
+				<action name="Execute"><execute>x-www-browser https://www.urbandictionary.com/</execute></action>
 			</item>
-			<item label="Hdd io">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo iotop</execute></action>
+			<item label="[Knowyourmeme]">
+				<action name="Execute"><execute>x-www-browser https://knowyourmeme.com/</execute></action>
 			</item>
-			<item label="Open files">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 150x70+0+0 -hold -e lsof</execute></action>
+			<item label="[Pcpartpicker]">
+				<action name="Execute"><execute>x-www-browser https://uk.pcpartpicker.com/list/</execute></action>
 			</item>
-			<item label="Modified Files">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 150x70+0+0 -e files_modified_day</execute></action>
+			<item label="[Snapdrop]">
+				<action name="Execute"><execute>x-www-browser https://snapdrop.net/</execute></action>
 			</item>
-			<item label="Accessed Files">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 150x70+0+0 -e files_accessed_day</execute></action>
+			<item label="[Steam250]">
+				<action name="Execute"><execute>x-www-browser https://steam250.com/</execute></action>
 			</item>
-
-			<separator />
-			<item label="Active partitions">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e lsblk</execute></action>
+			<item label="[Google Translate]">
+				<action name="Execute"><execute>x-www-browser https://translate.google.com/</execute></action>
 			</item>
-			<item label="Mount points">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e findmnt</execute></action>
+			<item label="[Qhanzi.com]">
+				<action name="Execute"><execute>x-www-browser https://www.qhanzi.com/</execute></action>
 			</item>
-			<item label="Gnome-disks">
-				<action name="Execute"><execute>gnome-disks</execute></action>
-			</item>
-			<item label="Partition manager">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo cfdisk</execute></action>
-			</item>
-
-			<separator />
-			<item label="Current users">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e w</execute></action>
-			</item>
-			<item label="System paths">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e 'echo $PATH'</execute></action>
-			</item>
-			<item label="Change resolution">
-				<action name="Execute"><execute>arandr</execute></action>
-			</item>
-			<item label="List resolutions">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e xrandr</execute></action>
-			</item>
-			<item label="Power usage">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 100x50+0+0 -e sudo powertop</execute></action>
-			</item>
-			<item label="Temperature monitor">
-				<action name="Execute"><execute>xsensors</execute></action>
-			</item>
-
-			<separator />
-			<item label="System update">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e sudo apt_system_update</execute></action>
-			</item>
-			<item label="Force witheld updates">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e sudo apt-get --with-new-pkgs upgrade</execute></action>
-			</item>
-			<item label="Flatpak update">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e sudo flatpak update</execute></action>
-			</item>
-			<item label="Installed apps">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 80x70+0+0 -e sudo list_manual_apps</execute></action>
-			</item>
-			<item label="Services">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo systemctl list-unit-files --type=service</execute></action>
+			<item label="[Whatsapp web]">
+				<action name="Execute"><execute>x-www-browser https://web.whatsapp.com</execute></action>
 			</item>
 		</menu>
 
@@ -461,8 +363,143 @@
 		</menu>
 
 
+		<!-- System tools -->
+		<menu id="system" label="System" >
+			<item label="Info">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 100x30+0+0 -hold -e pcinfo</execute></action>
+			</item>
+			<item label="Memory">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e free -h</execute></action>
+			</item>
+			<item label="Power">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 100x50+0+0 -e sudo powertop</execute></action>
+			</item>
+			<item label="Temperature">
+				<action name="Execute"><execute>xsensors</execute></action>
+			</item>
+			<item label="Processes">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -e htop</execute></action>
+			</item>
+
+			<separator />
+			<item label="Network ports">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e ss -at</execute></action>
+			</item>
+			<item label="Network access">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo iftop</execute></action>
+			</item>
+			<item label="Network usage">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo nethogs</execute></action>
+			</item>
+			<item label="Nmap Scan network">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e sudo netscan</execute></action>
+			</item>
+
+			<separator />
+			<item label="Hdd usage">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -e ncdu /</execute></action>
+			</item>
+			<item label="Mount diskspace">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e df -h</execute></action>
+			</item>
+			<item label="Hdd io">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e sudo iotop</execute></action>
+			</item>
+			<item label="Open files">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 150x70+0+0 -hold -e lsof</execute></action>
+			</item>
+			<item label="Modified Files">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 150x70+0+0 -e files_modified_day</execute></action>
+			</item>
+			<item label="Accessed Files">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 150x70+0+0 -e files_accessed_day</execute></action>
+			</item>
+
+			<separator />
+			<item label="Partitions">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e lsblk</execute></action>
+			</item>
+			<item label="Mount points">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e findmnt</execute></action>
+			</item>
+			<item label="Gnome-disks">
+				<action name="Execute"><execute>gnome-disks</execute></action>
+			</item>
+			<item label="Cfdisk">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo cfdisk</execute></action>
+			</item>
+
+			<separator />
+			<item label="Current users">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e w</execute></action>
+			</item>
+
+			<separator />
+			<item label="System paths">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e 'echo $PATH'</execute></action>
+			</item>
+			<item label="List resolutions">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e xrandr</execute></action>
+			</item>
+			<item label="Change resolution">
+				<action name="Execute"><execute>arandr</execute></action>
+			</item>
+
+
+			<separator />
+			<item label="System update">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e sudo apt_system_update</execute></action>
+			</item>
+			<item label="Force witheld updates">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e sudo apt-get --with-new-pkgs upgrade</execute></action>
+			</item>
+			<item label="Flatpak update">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -hold -e sudo flatpak update</execute></action>
+			</item>
+			<item label="Apps">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 80x70+0+0 -e sudo list_manual_apps</execute></action>
+			</item>
+			<item label="Services">
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -e sudo systemctl list-unit-files --type=service</execute></action>
+			</item>
+		</menu>
+
+
+		<!-- This requires the presence of the 'obamenu' package to work
+		<menu id="/Debian" />
+		<separator />
+		<menu id="applications-menu" label="Applications" execute="/usr/bin/obamenu"/> -->
+
+
+		<!-- Openbox config -->
+		<separator />
+		<menu id="obox" label="Openbox" >
+			<item label="ObConf">
+				<action name="Execute"><execute>obconf</execute></action>
+			</item>
+			<item label="Add Wallpaper">
+				<action name="Execute"><execute>nitrogen --restore</execute></action>
+			</item>
+			<item label="Add Taskbar">
+				<action name="Execute"><execute>tint2</execute></action>
+			</item>
+			<item label="Add Launcher">
+				<action name="Execute"><execute>plank</execute></action>
+			</item>
+			<item label="Add Clipboard">
+				<action name="Execute"><execute>parcellite</execute></action>
+			</item>
+			<item label="Reconfigure">
+				<action name="Reconfigure" />
+			</item>
+			<item label="Restart">
+				<action name="Restart" />
+			</item>
+		</menu>
+
+
 		<!-- Common config scripts-->
-		<menu id="config" label="Config" >
+		<menu id="config" label="Configs" >
 			<item label="Edit Openbox Autostart">
 				<action name="Execute"><execute>geany ~/.config/openbox/autostart</execute></action>
 			</item>
@@ -499,60 +536,28 @@
 		<!-- Common log files-->
 		<menu id="logs" label="logs" >
 			<item label="System Log (static)">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 150x70+0+0 -e sudo less +G /var/log/syslog</execute></action>
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 150x70+0+0 -hold -e sudo less +G /var/log/syslog</execute></action>
 			</item>
 			<item label="System Log (follow)">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 150x70+0+0 -e sudo tail -f /var/log/syslog</execute></action>
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 150x70+0+0 -hold -e sudo tail -f /var/log/syslog</execute></action>
 			</item>
 			<item label="Authorisations Log">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 150x70+0+0 -e sudo less +G /var/log/auth.log</execute></action>
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 150x70+0+0 -hold -e sudo less +G /var/log/auth.log</execute></action>
 			</item>
 			<item label="Kernel Log">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 150x70+0+0 -e sudo less +G /var/log/kern.log</execute></action>
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 150x70+0+0 -hold -e sudo less +G /var/log/kern.log</execute></action>
 			</item>
 			<item label="Drivers Log">
 				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 150x70+0+0 -hold -e sudo dmesg</execute></action>
 			</item>
 			<item label="Apt Changes Log">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 150x70+0+0 -e sudo less +G /var/log/apt/history.log</execute></action>
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 150x70+0+0 -hold -e sudo less +G /var/log/apt/history.log</execute></action>
 			</item>
 			<item label="Firewall Log (ufw)">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 150x70+0+0 -e sudo less +G /var/log/ufw.log</execute></action>
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 150x70+0+0 -hold -e sudo less +G /var/log/ufw.log</execute></action>
 			</item>
 			<item label="Daemon / Services Log">
-				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 150x70+0+0 -e sudo less +G /var/log/daemon.log</execute></action>
-			</item>
-		</menu>
-
-		<!-- This requires the presence of the 'obamenu' package to work
-		<menu id="/Debian" />
-		<separator />
-		<menu id="applications-menu" label="Applications" execute="/usr/bin/obamenu"/> -->
-
-
-		<!-- Openbox config -->
-		<separator />
-		<menu id="obox" label="Openbox" >
-			<item label="ObConf">
-				<action name="Execute"><execute>obconf</execute></action>
-			</item>
-			<item label="Wallpaper">
-				<action name="Execute"><execute>nitrogen --restore</execute></action>
-			</item>
-			<item label="Taskbar">
-				<action name="Execute"><execute>tint2</execute></action>
-			</item>
-			<item label="Launcher">
-				<action name="Execute"><execute>plank</execute></action>
-			</item>
-			<item label="Clipboard">
-				<action name="Execute"><execute>parcellite</execute></action>
-			</item>
-			<item label="Reconfigure">
-				<action name="Reconfigure" />
-			</item>
-			<item label="Restart">
-				<action name="Restart" />
+				<action name="Execute"><execute>uxterm -fa default -fs 12 -geometry 150x70+0+0 -hold -e sudo less +G /var/log/daemon.log</execute></action>
 			</item>
 		</menu>
 
@@ -567,13 +572,13 @@
 		</item>
 		<item label="Reboot">
 			<action name="Execute">
-				<prompt>Are you sure you want to reboot?</prompt>
+				<prompt>Reboot system now?</prompt>
 				<execute>sudo shutdown -r now</execute>
 			</action>
 		</item>
 		<item label="Shutdown">
 			<action name="Execute">
-			<prompt>Are you sure you want to shutdown?</prompt>
+			<prompt>Shutdown system now?</prompt>
 				<execute>sudo shutdown -h now</execute>
 			</action>
 		</item>
